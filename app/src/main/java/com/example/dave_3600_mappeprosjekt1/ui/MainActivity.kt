@@ -1,4 +1,4 @@
-package com.example.dave_3600_mappeprosjekt1
+package com.example.dave_3600_mappeprosjekt1.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
