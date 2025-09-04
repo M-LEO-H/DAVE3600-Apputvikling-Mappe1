@@ -1,3 +1,5 @@
 package com.example.dave_3600_mappeprosjekt1.ui.pages
 
-class Preference
+class Preference(){
+
+}
