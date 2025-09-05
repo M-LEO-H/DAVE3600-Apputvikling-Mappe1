@@ -2,4 +2,6 @@
     <string name="app_name">DAVE-3600-Mappeprosjekt1</string>
     <string name="preference">Preferanser</string>
     <string name="preferenceText">Velg Språk</string>
+    <string name="game">Spill</string>
+    <string name="game_text">Gi et svar!</string>
 </resources>
