@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DAVE-3600-Mappeprosjekt1</string>
+    <string name="preference">Präferenzen</string>
+    <string name="preferenceText">Sprache auswählen</string>
+</resources>

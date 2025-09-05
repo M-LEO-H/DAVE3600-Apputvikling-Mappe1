@@ -8,6 +8,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dave_3600_mappeprosjekt1.R
 import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 
 @Composable
@@ -23,6 +24,6 @@ fun PageTitle(title: String, modifier: Modifier = Modifier){
 @Composable
 fun PageTitleView() {
     DAVE3600Mappeprosjekt1Theme {
-        PageTitle("Preferences")
+        PageTitle(stringResource(id = R.string.preference))
     }
 }
