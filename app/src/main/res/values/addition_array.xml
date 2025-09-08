@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- A String array of random additions. It is in the structure of a, b, answer -->
     <string-array name="addition_array">
         <item>3,5,8</item>
         <item>1,3,4</item>

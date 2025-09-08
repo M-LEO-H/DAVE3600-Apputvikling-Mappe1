@@ -13,15 +13,19 @@ data class ShowAddition(
 )
 
 
-
+//A function that returns a list of random additions with no duplication.
 @Composable
 fun getRandomAdditions(length: Int): List<ShowAddition> {
     val items = stringArrayResource(id = R.array.addition_array)
+
+    //Convert the string array to a list of ShowAddition objects, shuffels it, and takes in the
+    //length set in preference
     return items.toList()
         .shuffled()
-        .take(length)
+        .take(length) //TODO make this a parameter that is retrieved by the length set in preference
         .map { str ->
             val parts = str.split(",")
+            //Convert the string parts to integers and return a ShowAddition object
             ShowAddition(
                 a = parts[0].toInt(),
                 b = parts[1].toInt(),

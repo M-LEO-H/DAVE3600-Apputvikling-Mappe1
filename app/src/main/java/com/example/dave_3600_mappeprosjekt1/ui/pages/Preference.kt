@@ -31,6 +31,9 @@ fun PreferencePage(){
             ) {
             UnderTitle(stringResource(id = R.string.preferenceText))
             RadioButtonListHorizontal(listOf("Norsk", "Tysk"))
+
+
+
         }
     }
 }

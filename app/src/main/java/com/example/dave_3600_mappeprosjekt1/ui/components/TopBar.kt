@@ -15,6 +15,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 
+
+//Top bar with back button and title
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
