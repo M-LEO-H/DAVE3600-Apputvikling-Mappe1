@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.dave_3600_mappeprosjekt1.ui.components.OptionsScreen
+import com.example.dave_3600_mappeprosjekt1.ui.components.OptionsScreen
 import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 
 class MainActivity : ComponentActivity() {
@@ -38,10 +40,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
+
 @Composable
 fun GreetingPreview() {
     DAVE3600Mappeprosjekt1Theme {
         Greeting("Android")
     }
 }
+
