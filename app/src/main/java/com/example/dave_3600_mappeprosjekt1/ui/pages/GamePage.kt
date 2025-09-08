@@ -8,6 +8,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -37,58 +38,56 @@ fun GamePage(){
         ) {
             UnderTitle(stringResource(R.string.game_text))
 
-            val additionList = getRandomAdditions(5)
-            var count = 0
-
-            val currentQuestion = remember {additionList[count]}
+            val additionList = remember { getRandomAdditions(10) }
+            var count by remember { mutableIntStateOf(0) }
+            val currentQuestion = additionList[count]
 
             Text("${currentQuestion.a} + ${currentQuestion.b}")
+            Text("$count")
 
-            /*for (item in additionList){
+            for (item in additionList){
                 Text("${item.a} + ${item.b} = ${item.answer}")
-            } */
+            }
 
             var input by remember {mutableStateOf("")}
 
             Display(input)
 
             Keyboard { buttonClick ->
-                if(buttonClick == "Angi svar" || buttonClick == "DEL"){
-                    /*TODO checkAnswer(input) */
-                    if(buttonClick == "DEL"){
+                when (buttonClick) {
+                    "DEL" -> {
                         input = input.dropLast(1)
-
-                    } else {
-                        val isCorrect = checkAnswer(input.toInt(), currentQuestion.answer)
-                            if(isCorrect){
-                                count++
-
-                            /*TODO*/
-                         } else {
-                            /*TODO*/
-                        }
-
                     }
+                    "Angi svar" -> {
+                        val isCorrect = checkAnswer(input.toInt(), currentQuestion.answer)
+                        if(isCorrect){
+                            /*TODO*/
+                            count += 1
+                            input = ""
 
-
+                        } else {
+                            /*TODO*/
+                            count += 100
+                            input = ""
+                        }
+                    }
+                    else -> {
+                        input += buttonClick
+                    }
                 }
-                input += buttonClick
-
             }
         }
-
     }
 }
-
 
 fun checkAnswer
             (input: Int,
              correctAnswer: Int,
 ): Boolean {
-    if(input == correctAnswer){
-        return true
+    return if(input == correctAnswer){
+        true
     }
-    else return false
+    else false
 }
 
 @Composable
