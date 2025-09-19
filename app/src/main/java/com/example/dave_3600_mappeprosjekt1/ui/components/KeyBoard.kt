@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun Keyboard(
     modifier: Modifier = Modifier,
-    buttonClick: (String) -> Unit) {
+    buttonClick: (Int) -> Unit) {
     //val userInput = arrayOf()
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -26,22 +26,23 @@ fun Keyboard(
         Column {
 
             Row {
-                Button(onClick = { buttonClick("1") }) { Text("1") }
-                Button(onClick = { buttonClick("2") }) { Text("2") }
-                Button(onClick = { buttonClick("3") }) { Text("3") }
+                IntButton(1, onClick = buttonClick)
+                IntButton(2, onClick = buttonClick)}
+                IntButton(3, onClick = buttonClick)
             }
             Row {
-                Button(onClick = { buttonClick("4") }) { Text("4") }
-                Button(onClick = { buttonClick("5") }) { Text("5") }
-                Button(onClick = { buttonClick("6") }) { Text("6") }
+                IntButton(4, onClick = buttonClick)
+                IntButton(5, onClick = buttonClick)
+                IntButton(6, onClick = buttonClick)
+
             }
             Row {
-                Button(onClick = { buttonClick("7") }) { Text("7") }
-                Button(onClick = { buttonClick("8") }) { Text("8") }
-                Button(onClick = { buttonClick("9") }) { Text("9") }
+                IntButton(7, onClick = buttonClick)
+                IntButton(8, onClick = buttonClick)
+                IntButton(9, onClick = buttonClick)
             }
             Row {
-                Button(onClick = { buttonClick("0") }) { Text("0") }
+                IntButton(0, onClick = buttonClick)
                 Button(onClick = { buttonClick("DEL") }) { Text("DEL") }
                 Button(onClick = { buttonClick("Angi svar") }) { Text("Angi svar") }
             }
