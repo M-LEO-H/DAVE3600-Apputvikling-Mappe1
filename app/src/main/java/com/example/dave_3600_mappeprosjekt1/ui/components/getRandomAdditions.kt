@@ -20,7 +20,8 @@ fun getRandomAdditions(length: Int): List<ShowAddition> {
 
     //Convert the string array to a list of ShowAddition objects, shuffels it, and takes in the
     //length set in preference
-    return items.toList()
+    return items
+        .toList()
         .shuffled()
         .take(length) //TODO make this a parameter that is retrieved by the length set in preference
         .map { str ->

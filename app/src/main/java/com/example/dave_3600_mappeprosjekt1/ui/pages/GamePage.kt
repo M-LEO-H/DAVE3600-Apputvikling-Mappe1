@@ -7,11 +7,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.example.dave_3600_mappeprosjekt1.R
 import com.example.dave_3600_mappeprosjekt1.ui.components.TopBar
 import com.example.dave_3600_mappeprosjekt1.ui.components.UnderTitle
@@ -20,9 +20,10 @@ import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 
 
 @Composable
-fun GamePage(){
+fun GamePage(navController: NavHostController) {
     Scaffold(
-        topBar = { TopBar(stringResource(id = R.string.game)) }
+        topBar = { TopBar(stringResource(id = R.string.game),
+            onBackClick = {navController.navigateUp()}) }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -48,6 +49,7 @@ fun GamePage(){
 @Composable
 fun GamePagePreview() {
     DAVE3600Mappeprosjekt1Theme {
-        GamePage()
+        val navController = androidx.navigation.compose.rememberNavController()
+        GamePage(navController)
     }
 }
