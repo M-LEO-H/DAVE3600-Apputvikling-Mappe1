@@ -38,7 +38,7 @@ fun GamePage(){
         ) {
             UnderTitle(stringResource(R.string.game_text))
 
-            val additionList = remember { getRandomAdditions(10) }
+            val additionList = getRandomAdditions(10)
             var count by remember { mutableIntStateOf(0) }
             val currentQuestion = additionList[count]
 

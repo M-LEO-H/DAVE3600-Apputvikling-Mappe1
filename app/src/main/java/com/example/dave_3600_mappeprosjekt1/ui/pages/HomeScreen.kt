@@ -10,7 +10,7 @@ import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 @Composable
 fun PreviewOptionsScreen() {
     DAVE3600Mappeprosjekt1Theme {
-        OptionsScreen(options = listOf("Play", "x", "x", "x", "x"))
+        OptionsScreen(options = listOf("Play", "Informasjon", "Preferanser"))
     }
 }
 
