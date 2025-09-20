@@ -2,22 +2,18 @@ package com.example.dave_3600_mappeprosjekt1.ui.data
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringArrayResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import com.example.dave_3600_mappeprosjekt1.R
-import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
-
-
-
 
 
 //A function that returns a list of random additions with no duplication.
+
 @Composable
 fun getRandomAdditionsList(length: Int): List<ShowAddition> {
-    val items = stringArrayResource(id = R.array.addition_array)
-
     //Convert the string array to a list of ShowAddition objects, shuffels it, and takes in the
     //length set in preference
-    return items
+    var temp = stringArrayResource(R.array.addition_array)
+    return temp
         .toList()
         .shuffled()
         .take(length) //TODO make this a parameter that is retrieved by the length set in preference
@@ -25,9 +21,9 @@ fun getRandomAdditionsList(length: Int): List<ShowAddition> {
             val parts = str.split(",")
             //Convert the string parts to integers and return a ShowAddition object
             ShowAddition(
-                a = parts[0].toInt(),
-                b = parts[1].toInt(),
-                answer = parts[2].toInt(),
+                a = parts[0].toString(),
+                b = parts[1].toString(),
+                answer = parts[2].toString(),
             )
         }
 }
@@ -36,11 +32,3 @@ fun getRandomAdditionsList(length: Int): List<ShowAddition> {
 
 
 
-
-@Preview(showBackground = true)
-@Composable
-fun ShowAdditionPreview() {
-    DAVE3600Mappeprosjekt1Theme {
-        getRandomAdditionsList(10)
-    }
-}

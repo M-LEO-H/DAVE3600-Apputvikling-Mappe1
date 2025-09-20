@@ -5,9 +5,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun IntButton(int: Int, onClick: (Int) -> Unit) {
-    Button(onClick = { onClick(int) }) {
-        Text(int.toString())
+fun StringButton(string: String, onClick: (String) -> Unit) {
+    Button(onClick = { onClick(string) }) {
+        Text(string)
     }
 
 }

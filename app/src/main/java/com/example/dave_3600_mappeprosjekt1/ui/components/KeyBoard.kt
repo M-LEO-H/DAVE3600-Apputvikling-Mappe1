@@ -16,7 +16,10 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun Keyboard(
     modifier: Modifier = Modifier,
-    buttonClick: (Int) -> Unit) {
+
+    ) {
+
+
     //val userInput = arrayOf()
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -26,25 +29,26 @@ fun Keyboard(
         Column {
 
             Row {
-                IntButton(1, onClick = buttonClick)
-                IntButton(2, onClick = buttonClick)}
-                IntButton(3, onClick = buttonClick)
-            }
-            Row {
-                IntButton(4, onClick = buttonClick)
-                IntButton(5, onClick = buttonClick)
-                IntButton(6, onClick = buttonClick)
+                StringButton("1", onClick = {it})
+                StringButton("2", onClick = {it})
+                StringButton("3", onClick = {it})
 
             }
             Row {
-                IntButton(7, onClick = buttonClick)
-                IntButton(8, onClick = buttonClick)
-                IntButton(9, onClick = buttonClick)
+                StringButton("4", onClick = {it})
+                StringButton("5", onClick = {it})
+                StringButton("6", onClick = {it})
+
             }
             Row {
-                IntButton(0, onClick = buttonClick)
-                Button(onClick = { buttonClick("DEL") }) { Text("DEL") }
-                Button(onClick = { buttonClick("Angi svar") }) { Text("Angi svar") }
+                StringButton("7", onClick = {it})
+                StringButton("8", onClick = {it})
+                StringButton("9", onClick = {it})
+
+            }
+            Row {
+                StringButton("0", onClick = {it})
+
             }
 
         }
@@ -63,5 +67,5 @@ fun Display() {
 @Preview(showBackground = true)
 @Composable
 fun KeyboardPreview() {
-    Keyboard(buttonClick = {})
+    Keyboard()
 }

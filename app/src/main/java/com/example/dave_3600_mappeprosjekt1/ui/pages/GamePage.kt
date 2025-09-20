@@ -19,6 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -52,9 +53,10 @@ fun GamePage(
             verticalArrangement = Arrangement.Center
         ) {
             GameLayout(
-                onUserGuessChanged = {gameViewModel.updateGuess(it)},
+                onUserGuessChanged = {gameViewModel.updateUserGuess(it)},
                 currentAddition = gameViewModel.currentAddition,
                 userGuess = gameViewModel.userGuess,
+                additionList = stringArrayResource(R.array.addition_array)
 
             )
         }
@@ -64,9 +66,10 @@ fun GamePage(
 @Composable
 fun GameLayout(
     modifier: Modifier = Modifier,
-    onUserGuessChanged: (Int) -> Unit = {},
+    onUserGuessChanged: (String) -> Unit,
     currentAddition: ShowAddition,
-    userGuess: Int,
+    userGuess: String,
+    additionList: Array<String>
 ){
     Card(
         modifier = modifier,
@@ -88,7 +91,7 @@ fun GameLayout(
         value = userGuess,
         singleLine = true,
         modifier = Modifier.fillMaxWidth(),
-        onValueChange = {},
+        onValueChange = onUserGuessChanged,
         label = { Text(stringResource(R.string.enter_your_word)) },
         isError = false
     )
