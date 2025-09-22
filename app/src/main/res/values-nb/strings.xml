@@ -4,4 +4,7 @@
     <string name="preferenceText">Velg Språk</string>
     <string name="game">Spill</string>
     <string name="game_text">Gi et svar!</string>
+    <string name="aboutTitle">Om Spillet</string>
+    <string name="aboutText">Dette spillet handler om å lære små barn enkle addisjoner. Spillet gir brukeren et sett med spørsmål på mellom 5, 10 og 15 spørsmål. Etter hvert svar gir spillet deg tilbakemelding om du var riktig eller ikke, med illustrasjoner og forklaringer på hva det riktige svaret er.</string>
+    <string name="enter_your_answer">Skriv in svaret</string>
 </resources>

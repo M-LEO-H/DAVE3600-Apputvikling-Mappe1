@@ -5,6 +5,6 @@
     <string name="game">Game</string>
     <string name="game_text">Give an answer!</string>
     <string name="aboutTitle">About The Game</string>
-    <string name="aboutText">This game is about teaching young children simple additions.
-        The game will give the user a set of questions ranging from; 5, 10, and 15 questions. After each answers given, the game will give you feedback on weather you were correct or not,  with illustrations and explainations of what the correct answer is.</string>
+    <string name="aboutText">This game is about teaching young children simple additions. The game will give the user a set of questions ranging from; 5, 10, and 15 questions. After each answers given, the game will give you feedback on weather you were correct or not,  with illustrations and explainations of what the correct answer is.</string>
+    <string name="enter_your_answer">Enter Your Answer</string>
 </resources>

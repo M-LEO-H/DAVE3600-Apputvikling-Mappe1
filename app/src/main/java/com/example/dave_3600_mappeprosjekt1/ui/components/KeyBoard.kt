@@ -16,7 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun Keyboard(
     modifier: Modifier = Modifier,
-
+    onDigitClick: (String) -> Unit,
+    onDeleteClick: () -> Unit,
     ) {
 
 
@@ -29,25 +30,26 @@ fun Keyboard(
         Column {
 
             Row {
-                StringButton("1", onClick = {it})
-                StringButton("2", onClick = {it})
-                StringButton("3", onClick = {it})
+                StringButton("1", onClick = onDigitClick)
+                StringButton("2", onClick = onDigitClick)
+                StringButton("3", onClick = onDigitClick)
 
             }
             Row {
-                StringButton("4", onClick = {it})
-                StringButton("5", onClick = {it})
-                StringButton("6", onClick = {it})
+                StringButton("4", onClick = onDigitClick)
+                StringButton("5", onClick = onDigitClick)
+                StringButton("6", onClick = onDigitClick)
 
             }
             Row {
-                StringButton("7", onClick = {it})
-                StringButton("8", onClick = {it})
-                StringButton("9", onClick = {it})
+                StringButton("7", onClick = onDigitClick)
+                StringButton("8", onClick = onDigitClick)
+                StringButton("9", onClick = onDigitClick)
 
             }
             Row {
-                StringButton("0", onClick = {it})
+                StringButton("0", onClick = onDigitClick)
+                DeleteButton(onDeleteClick = onDeleteClick)
 
             }
 
@@ -64,8 +66,9 @@ fun Display() {
 }
 
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun KeyboardPreview() {
     Keyboard()
-}
+}*/

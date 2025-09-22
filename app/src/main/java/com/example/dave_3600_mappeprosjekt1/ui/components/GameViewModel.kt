@@ -1,5 +1,6 @@
 package com.example.dave_3600_mappeprosjekt1.ui.components
 
+import android.app.Application
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -14,36 +15,52 @@ import kotlinx.coroutines.flow.StateFlow
 import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 import kotlinx.coroutines.flow.asStateFlow
 import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.AndroidViewModel
 
-class GameViewModel : ViewModel() {
+class GameViewModel(application: Application) : AndroidViewModel(application) {
     var userGuess by mutableStateOf("")
         private set
     private var _uiState = MutableStateFlow(GameUiState())
-    private var allAdditions: MutableList<ShowAddition> = mutableListOf()
+    private var allAdditions: Array<String> = application.resources.getStringArray(R.array.addition_array)
+    private lateinit var gameAdditions: MutableList<ShowAddition>
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
     lateinit var currentAddition: ShowAddition
 
 
 
+    fun getRandomAdditionsList() {
+
+        gameAdditions = allAdditions
+            .toList()
+            .shuffled()
+            .take(_uiState.value.gameLength)
+            .map { str ->
+                val parts = str.split(",")
+                //Convert the string parts to integers and return a ShowAddition object
+                ShowAddition(
+                    a = parts[0],
+                    b = parts[1],
+                    answer = parts[2]
+                )
+            }.toMutableList()
+    }
 
 
 
-    fun getNextAddition(): ShowAddition? {
-        allAdditions = getRandomAdditionsList(uiState.value.gameLength).toMutableList()
-        if(allAdditions.isNotEmpty()){
-            val nextAddition = allAdditions[0]
-            allAdditions.remove(nextAddition)
-            currentAddition = nextAddition
-            return currentAddition
-
-        } else {
-            //TODO gameOver()
-           return null
+    fun getNextAddition(): ShowAddition {
+        if(gameAdditions.isEmpty()) {
+            return ShowAddition("","","")
         }
+        //Takes and removes the first class from the list and sets it in currentAddition
+        currentAddition = gameAdditions.removeAt(0)
+        return currentAddition
+
     }
 
 
     fun resetGame(){
+        getRandomAdditionsList()
+        userGuess = ""
         _uiState.value = GameUiState(currentAddition = getNextAddition())
     }
 

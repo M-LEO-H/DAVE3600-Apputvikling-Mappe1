@@ -11,8 +11,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.dave_3600_mappeprosjekt1.ui.components.GameViewModel
 import com.example.dave_3600_mappeprosjekt1.ui.components.OptionsScreen
 import com.example.dave_3600_mappeprosjekt1.ui.components.OptionsScreen
+import com.example.dave_3600_mappeprosjekt1.ui.pages.GamePage
 import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 
 class MainActivity : ComponentActivity() {
@@ -21,12 +25,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DAVE3600Mappeprosjekt1Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                val navController = rememberNavController()
+                GamePage(navController = navController )
             }
         }
     }

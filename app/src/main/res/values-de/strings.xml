@@ -4,4 +4,7 @@
     <string name="preferenceText">Sprache auswählen</string>
     <string name="game">Spiel</string>
     <string name="game_text">Gib eine Antwort!</string>
+    <string name="aboutTitle">Über das Spiel</string>
+    <string name="aboutText">In diesem Spiel geht es darum, kleinen Kindern einfache Additionsaufgaben beizubringen. Der Spieler erhält einen Fragenkatalog mit 5, 10 und 15 Fragen. Nach jeder Antwort erhält der Spieler eine Rückmeldung, ob die Antwort richtig war oder nicht. Die Antwort wird mit Abbildungen und Erklärungen ergänzt.</string>
+    <string name="enter_your_answer">Geben Sie Ihre Antwort ein</string>
 </resources>
