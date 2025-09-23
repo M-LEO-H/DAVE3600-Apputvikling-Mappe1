@@ -39,7 +39,6 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             .take(_uiState.value.gameLength)
             .map { str ->
                 val parts = str.split(",")
-                //Convert the string parts to integers and return a ShowAddition object
                 ShowAddition(
                     a = parts[0],
                     b = parts[1],
