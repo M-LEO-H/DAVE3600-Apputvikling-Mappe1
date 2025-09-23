@@ -31,7 +31,6 @@ import com.example.dave_3600_mappeprosjekt1.R
 import com.example.dave_3600_mappeprosjekt1.ui.components.GameViewModel
 import com.example.dave_3600_mappeprosjekt1.ui.components.Keyboard
 import com.example.dave_3600_mappeprosjekt1.ui.components.TopBar
-import com.example.dave_3600_mappeprosjekt1.ui.components.UnderTitle
 import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dave_3600_mappeprosjekt1.ui.data.GameUiState

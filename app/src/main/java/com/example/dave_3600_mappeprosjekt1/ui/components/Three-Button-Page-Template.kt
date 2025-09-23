@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 fun OptionsScreen(
     modifier: Modifier = Modifier,
     options: List<String>,
+    onOptionClick: (String) -> Unit
 ) {
     Box(modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -41,11 +42,11 @@ fun OptionsScreen(
     }
 
 }
-
+/*
 @Preview
 @Composable
 fun OptionsScreenPreview() {
     OptionsScreen(options = listOf("Option 1", "Option 2", "Option 3"))
-}
+}*/
 
 
