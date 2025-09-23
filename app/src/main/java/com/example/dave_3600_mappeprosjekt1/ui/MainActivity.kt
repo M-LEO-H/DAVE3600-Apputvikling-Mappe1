@@ -12,11 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.dave_3600_mappeprosjekt1.ui.components.GameViewModel
 import com.example.dave_3600_mappeprosjekt1.ui.components.OptionsScreen
 import com.example.dave_3600_mappeprosjekt1.ui.components.OptionsScreen
+import com.example.dave_3600_mappeprosjekt1.ui.pages.AboutPage
 import com.example.dave_3600_mappeprosjekt1.ui.pages.GamePage
+import com.example.dave_3600_mappeprosjekt1.ui.pages.HomePage
 import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 
 class MainActivity : ComponentActivity() {
@@ -26,25 +30,32 @@ class MainActivity : ComponentActivity() {
         setContent {
             DAVE3600Mappeprosjekt1Theme {
                 val navController = rememberNavController()
-                GamePage(navController = navController )
+
+                NavHost(navController, startDestination = "home") {
+                    composable("home") {
+                        HomePage(navController)
+                    }
+                    composable("game") {
+                        GamePage(navController)
+                    }
+                    composable("about") {
+                        AboutPage(navController)
+                    }
+                    composable("preference") {
+                    }
+                }
+                HomePage(navController)
+
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-
+@Preview
 @Composable
 fun GreetingPreview() {
     DAVE3600Mappeprosjekt1Theme {
-        Greeting("Android")
+
     }
 }
 
