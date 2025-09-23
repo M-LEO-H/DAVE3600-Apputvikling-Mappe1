@@ -34,6 +34,7 @@ import com.example.dave_3600_mappeprosjekt1.ui.components.TopBar
 import com.example.dave_3600_mappeprosjekt1.ui.components.UnderTitle
 import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.dave_3600_mappeprosjekt1.ui.data.GameUiState
 import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 
 
@@ -67,11 +68,15 @@ fun GamePage(
                 onUserGuessChanged = { gameViewModel.updateUserGuess(it) },
                 currentAddition = gameViewModel.currentAddition,
                 userGuess = gameViewModel.userGuess,
-                additionList = stringArrayResource(R.array.addition_array)
+                additionList = stringArrayResource(R.array.addition_array),
+                userScore = gameViewModel.userScore,
+                isAnswerWrong = gameViewModel.isAnswerWrong
+
             )
             Keyboard(
                 onDigitClick = { digit -> gameViewModel.addDigit(digit) },
-                onDeleteClick = { gameViewModel.deleteLast() }
+                onDeleteClick = { gameViewModel.deleteLast() },
+                onSubmitClick = { gameViewModel.submitAnswer() }
             )
         }
     }
@@ -83,7 +88,9 @@ fun GameLayout(
     onUserGuessChanged: (String) -> Unit,
     currentAddition: ShowAddition,
     userGuess: String,
-    additionList: Array<String>
+    additionList: Array<String>,
+    userScore: Int,
+    isAnswerWrong: Boolean
 ){
     Card(
         modifier = modifier,
@@ -97,6 +104,9 @@ fun GameLayout(
             Text(
                 text = "Solve: ${currentAddition.a} + ${currentAddition.b} = ?"
             )
+            Text(
+                text = "Score: $userScore"
+            )
 
         }
 
@@ -107,7 +117,7 @@ fun GameLayout(
         modifier = Modifier.fillMaxWidth(),
         onValueChange = onUserGuessChanged,
         label = { Text(stringResource(R.string.enter_your_answer)) },
-        isError = false
+        isError = isAnswerWrong,
     )
 
 }

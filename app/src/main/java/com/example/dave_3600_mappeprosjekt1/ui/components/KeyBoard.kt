@@ -18,6 +18,7 @@ fun Keyboard(
     modifier: Modifier = Modifier,
     onDigitClick: (String) -> Unit,
     onDeleteClick: () -> Unit,
+    onSubmitClick: () -> Unit,
     ) {
 
 
@@ -50,6 +51,7 @@ fun Keyboard(
             Row {
                 StringButton("0", onClick = onDigitClick)
                 DeleteButton(onDeleteClick = onDeleteClick)
+                SubmitButton (onSubmitClick = onSubmitClick)
 
             }
 

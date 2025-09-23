@@ -16,6 +16,8 @@ import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 import kotlinx.coroutines.flow.asStateFlow
 import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.AndroidViewModel
+import com.example.dave_3600_mappeprosjekt1.ui.pages.checkAnswer
+import kotlinx.coroutines.flow.update
 
 class GameViewModel(application: Application) : AndroidViewModel(application) {
     var userGuess by mutableStateOf("")
@@ -25,6 +27,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var gameAdditions: MutableList<ShowAddition>
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
     lateinit var currentAddition: ShowAddition
+
 
 
 
@@ -62,6 +65,9 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         getRandomAdditionsList()
         userGuess = ""
         _uiState.value = GameUiState(currentAddition = getNextAddition())
+        _uiState.value = GameUiState(isAnswerWrong = false)
+        _uiState.value = GameUiState(score = 0)
+
     }
 
     init{
@@ -80,8 +86,41 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
        }
     }
 
+    fun submitAnswer(){
+        if(userGuess.isNotEmpty()){
+            if(checkAnswer(userGuess, currentAddition.answer)){
+                userGuess = ""
+                _uiState.update { it ->
+                    it.copy(
+                        score = it.score + 1,
+                        currentAddition = getNextAddition()
+                    )
+                }
+
+
+            } else {
+                /*TODO*/
+                _uiState.update { it ->
+                    it.copy(
+                        isAnswerWrong = true
+                    )
+                }
+
+            }
+
+        }
+
+        /*TODO*/
+
+    }
+
+    fun checkAnswer(userGuess : String, correctAnswer: String): Boolean{
+        return userGuess == correctAnswer
+    }
+
     fun updateUserGuess(userAnswer: String){
         userGuess = userAnswer
+
     }
 
 
