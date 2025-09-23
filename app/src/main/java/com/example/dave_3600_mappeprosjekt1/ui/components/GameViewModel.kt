@@ -122,5 +122,9 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
+    fun updateGameLength(length: Int) {
+        _uiState.value = _uiState.value.copy(gameLength = length)
+    }
+
 
 }
