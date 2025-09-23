@@ -36,7 +36,8 @@ fun PreferencePage(
 ){
     val lengths = integerArrayResource(id = R.array.game_lengths).toList()
     Scaffold(
-        topBar = { TopBar(stringResource(id = R.string.preference) )}
+
+        topBar = { TopBar(stringResource(id = R.string.preference))}
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier.padding(innerPadding).fillMaxSize(),
