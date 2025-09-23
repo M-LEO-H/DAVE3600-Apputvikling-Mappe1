@@ -36,8 +36,18 @@ import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dave_3600_mappeprosjekt1.ui.data.GameUiState
 import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
+import androidx.compose.runtime.collectAsState
+import com.example.dave_3600_mappeprosjekt1.ui.components.AdditionVisualizer
+import com.example.dave_3600_mappeprosjekt1.ui.components.DialogAlert
 
 
+
+/*
+
+TODO:
+
+NPR MAN STARTET SPILL OPPDATERES IKKE CURRENT ADDITION. DETTE SKAPER BUG PÅ FØRSTE RUNDE
+ */
 @Composable
 fun GamePage(
     navController: NavHostController,
@@ -45,8 +55,13 @@ fun GamePage(
         factory = androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory(
             LocalContext.current.applicationContext as Application
         )
+
     )
-) {
+
+)
+
+{
+    val gameUiState by gameViewModel.uiState.collectAsState()
     Scaffold(
         topBar = {
             TopBar(
@@ -69,14 +84,27 @@ fun GamePage(
                 currentAddition = gameViewModel.currentAddition,
                 userGuess = gameViewModel.userGuess,
                 additionList = stringArrayResource(R.array.addition_array),
-                userScore = gameViewModel.userScore,
-                isAnswerWrong = gameViewModel.isAnswerWrong
+                userScore =  gameUiState.score,
+                isAnswerWrong = gameUiState.isAnswerWrong,
+
 
             )
             Keyboard(
                 onDigitClick = { digit -> gameViewModel.addDigit(digit) },
                 onDeleteClick = { gameViewModel.deleteLast() },
                 onSubmitClick = { gameViewModel.submitAnswer() }
+            )
+        }
+        if(gameUiState.isAnswerWrong){
+            DialogAlert(
+                onDismiss = {
+                    /*TODO*/
+                },
+                dialogTitle = "Wrong answer",
+                dialogText = {
+                    AdditionVisualizer(gameUiState.currentAddition, modifier = Modifier.padding(16.dp))
+                },
+                onConfirmation = { gameViewModel.tryAgain() }
             )
         }
     }

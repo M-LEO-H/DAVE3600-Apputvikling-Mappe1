@@ -95,8 +95,6 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
                         currentAddition = getNextAddition()
                     )
                 }
-
-
             } else {
                 /*TODO*/
                 _uiState.update { it ->
@@ -104,9 +102,9 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
                         isAnswerWrong = true
                     )
                 }
+                userGuess = ""
 
             }
-
         }
 
         /*TODO*/
@@ -119,6 +117,15 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     fun updateUserGuess(userAnswer: String){
         userGuess = userAnswer
+
+    }
+
+    fun tryAgain(){
+        _uiState.update { it ->
+            it.copy(
+                isAnswerWrong = false
+            )
+        }
 
     }
 
