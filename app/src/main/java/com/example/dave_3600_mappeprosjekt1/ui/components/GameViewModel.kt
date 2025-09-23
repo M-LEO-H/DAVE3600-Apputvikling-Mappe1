@@ -83,5 +83,9 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         userGuess = userAnswer
     }
 
+    fun updateGameLength(length: Int) {
+        _uiState.value = _uiState.value.copy(gameLength = length)
+    }
+
 
 }
