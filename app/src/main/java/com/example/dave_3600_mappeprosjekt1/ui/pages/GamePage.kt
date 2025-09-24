@@ -106,6 +106,19 @@ fun GamePage(
                 onConfirmation = { gameViewModel.tryAgain() }
             )
         }
+        if(gameUiState.isGameOver){
+            DialogAlert(
+                onDismiss = {
+                    /*TODO*/
+                },
+                dialogTitle = "Game over!",
+                dialogText = {
+                    Text("Final score: ${gameUiState.score} / ${gameUiState.gameLength}")
+                },
+                onConfirmation = { /*TODO FIX NAV TO HOMEPAGE */ }
+            )
+        }
+
     }
 }
 
@@ -148,15 +161,7 @@ fun GameLayout(
     )
 
 }
-fun checkAnswer
-            (input: Int,
-             correctAnswer: Int,
-): Boolean {
-    return if(input == correctAnswer){
-        true
-    }
-    else false
-}
+
 
 @Composable
 fun Display(input: String){
