@@ -10,8 +10,8 @@
     <string name="enter_your_answer">Enter Your Answer</string>
 
     <string-array name="home_screen_options">
-        <item>Play</item>
-        <item>Information</item>
-        <item>Preferences</item>
+        <item>@string/game</item>
+        <item>@string/about</item>
+        <item>@string/preference</item>
     </string-array>
 </resources>
