@@ -31,7 +31,10 @@ class MainActivity : ComponentActivity() {
             DAVE3600Mappeprosjekt1Theme {
                 val navController = rememberNavController()
 
-                NavHost(navController, startDestination = "home") {
+                NavHost(
+                    navController,
+                    startDestination = "home")
+                {
                     composable("home") {
                         HomePage(navController)
                     }
@@ -44,7 +47,6 @@ class MainActivity : ComponentActivity() {
                     composable("preference") {
                     }
                 }
-                HomePage(navController)
 
             }
         }
