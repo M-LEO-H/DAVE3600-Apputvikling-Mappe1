@@ -16,7 +16,6 @@ import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 import kotlinx.coroutines.flow.asStateFlow
 import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.AndroidViewModel
-import com.example.dave_3600_mappeprosjekt1.ui.pages.checkAnswer
 import kotlinx.coroutines.flow.update
 
 class GameViewModel(application: Application) : AndroidViewModel(application) {
@@ -107,6 +106,13 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
                 userGuess = ""
 
             }
+            if(isGameOver()){
+                _uiState.update { it ->
+                    it.copy(
+                        isGameOver = true
+                    )
+                }
+            }
 
         }
 
@@ -134,6 +140,11 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     fun updateGameLength(length: Int) {
         _uiState.value = _uiState.value.copy(gameLength = length)
+    }
+
+    fun isGameOver(): Boolean {
+        return gameAdditions.isEmpty()
+
     }
 
 
