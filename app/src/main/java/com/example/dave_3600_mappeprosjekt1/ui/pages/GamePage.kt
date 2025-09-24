@@ -1,5 +1,6 @@
 package com.example.dave_3600_mappeprosjekt1.ui.pages
 
+import DialogAlert
 import android.app.Application
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
@@ -37,7 +39,7 @@ import com.example.dave_3600_mappeprosjekt1.ui.data.GameUiState
 import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 import androidx.compose.runtime.collectAsState
 import com.example.dave_3600_mappeprosjekt1.ui.components.AdditionVisualizer
-import com.example.dave_3600_mappeprosjekt1.ui.components.DialogAlert
+
 
 
 
@@ -96,26 +98,29 @@ fun GamePage(
         }
         if(gameUiState.isAnswerWrong){
             DialogAlert(
-                onDismiss = {
-                    /*TODO*/
-                },
+                
                 dialogTitle = "Wrong answer",
                 dialogText = {
                     AdditionVisualizer(gameUiState.currentAddition, modifier = Modifier.padding(16.dp))
                 },
-                onConfirmation = { gameViewModel.tryAgain() }
+                confirmButton = {
+                    Button(onClick = {gameViewModel.tryAgain()}) {
+                    Text("Confirm")
+                }  }
             )
         }
         if(gameUiState.isGameOver){
             DialogAlert(
-                onDismiss = {
-                    /*TODO*/
-                },
                 dialogTitle = "Game over!",
                 dialogText = {
                     Text("Final score: ${gameUiState.score} / ${gameUiState.gameLength}")
                 },
-                onConfirmation = { /*TODO FIX NAV TO HOMEPAGE */ }
+                confirmButton = { Button(onClick = {gameViewModel.resetGame()}) {
+                    Text("Restart game")
+                } },
+                dismissButton = { Button(onClick = {navController.navigateUp()}){
+                    Text("Home")
+                } }
             )
         }
 

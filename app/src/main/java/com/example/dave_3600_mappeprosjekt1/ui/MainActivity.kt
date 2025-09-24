@@ -21,6 +21,7 @@ import com.example.dave_3600_mappeprosjekt1.ui.components.OptionsScreen
 import com.example.dave_3600_mappeprosjekt1.ui.pages.AboutPage
 import com.example.dave_3600_mappeprosjekt1.ui.pages.GamePage
 import com.example.dave_3600_mappeprosjekt1.ui.pages.HomePage
+import com.example.dave_3600_mappeprosjekt1.ui.pages.PreferencePage
 import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 
 class MainActivity : ComponentActivity() {
@@ -45,6 +46,7 @@ class MainActivity : ComponentActivity() {
                         AboutPage(navController)
                     }
                     composable("preference") {
+                        PreferencePage(navController)
                     }
                 }
 

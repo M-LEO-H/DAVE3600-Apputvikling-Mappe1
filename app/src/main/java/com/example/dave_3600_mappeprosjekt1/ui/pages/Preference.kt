@@ -1,5 +1,6 @@
 package com.example.dave_3600_mappeprosjekt1.ui.pages
 
+import android.app.Application
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,10 +19,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.integerArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.dave_3600_mappeprosjekt1.R
 import com.example.dave_3600_mappeprosjekt1.ui.components.GameViewModel
 import com.example.dave_3600_mappeprosjekt1.ui.components.RadioButtonListHorizontal
@@ -32,7 +36,13 @@ import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 
 @Composable
 fun PreferencePage(
-    gameViewModel: GameViewModel
+    navController: NavController,
+    gameViewModel: GameViewModel = viewModel(
+        factory = androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory(
+            LocalContext.current.applicationContext as Application
+        )
+
+    )
 ){
     val lengths = integerArrayResource(id = R.array.game_lengths).toList()
     Scaffold(

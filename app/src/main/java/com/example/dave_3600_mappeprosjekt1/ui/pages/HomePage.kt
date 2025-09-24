@@ -18,7 +18,7 @@ fun HomePage(navController: NavHostController){
         options = stringArrayResource(id = R.array.home_screen_options).toList(),
         onOptionClick = { option ->
             when (option) {
-                stringResource(R.string.game) -> navController.navigate("game")
+                "Play" -> navController.navigate("game")
                 stringResource(R.string.about) -> navController.navigate("about")
                 stringResource(R.string.preference) -> navController.navigate("preference")
             }
