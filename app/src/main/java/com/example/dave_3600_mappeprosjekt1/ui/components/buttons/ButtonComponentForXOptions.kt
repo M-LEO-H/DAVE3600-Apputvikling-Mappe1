@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 fun OptionsScreen(
     modifier: Modifier = Modifier,
     options: List<String>,
-    onOptionClick: @Composable (String) -> Unit
+    onOptionClick: (String) -> Unit
 ) {
     Box(modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -27,7 +27,8 @@ fun OptionsScreen(
                     .align(Alignment.Center)
         ) {
                 items(options) { option ->
-                    Button(onClick = {},modifier.width(240.dp)) {Text(option)}
+                    Button(onClick = { onOptionClick(option)},modifier.width(240.dp)) {
+                        Text(option)}
 
                 }
             }
