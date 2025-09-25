@@ -68,13 +68,11 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             isAnswerWrong = false,
             isGameOver = false,
             score = 0,
+            gameLength = _uiState.value.gameLength
             )
 
     }
 
-    init{
-        resetGame()
-    }
 
 
 
@@ -150,7 +148,12 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun updateGameLength(length: Int) {
-        _uiState.value = _uiState.value.copy(gameLength = length)
+
+        _uiState.update { it ->
+            it.copy(
+                gameLength = length
+            )
+        }
     }
 
     fun isGameOver(): Boolean {

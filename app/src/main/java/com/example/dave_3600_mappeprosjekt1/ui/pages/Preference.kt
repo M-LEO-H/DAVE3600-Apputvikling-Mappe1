@@ -11,6 +11,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -41,9 +42,12 @@ fun PreferencePage(
     )
 ){
     val lengths = integerArrayResource(id = R.array.game_lengths).toList()
+    val uiState by gameViewModel.uiState.collectAsState()
     Scaffold(
+            topBar = {
+                TopBar(stringResource(id = R.string.preference),
+                onBackClick = { navController.navigateUp()})}
 
-        topBar = { TopBar(stringResource(id = R.string.preference))}
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier.padding(innerPadding).fillMaxSize(),
@@ -51,14 +55,13 @@ fun PreferencePage(
             verticalArrangement = Arrangement.Center
             ) {
             items(lengths) { length ->
-
                 Button(
-                    onClick = {gameViewModel.updateGameLength(length)
-                    }
+                    onClick = { gameViewModel.updateGameLength(length) },
+                    modifier = Modifier.padding(8.dp)
                 ) {
-                    Text(length.toString())
+                    val isSelected = uiState.gameLength == length
+                    Text(if (isSelected) "✅ $length" else length.toString())
                 }
-
             }
 
 

@@ -13,14 +13,17 @@ import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
 @Composable
 fun HomePage(navController: NavHostController){
+    val gameLabel = stringResource(R.string.game)
+    val aboutLabel = stringResource(R.string.about)
+    val prefLabel = stringResource(R.string.preference)
 
     OptionsScreen(
         options = stringArrayResource(id = R.array.home_screen_options).toList(),
         onOptionClick = { option ->
             when (option) {
-                "Play" -> navController.navigate("game")
-                stringResource(R.string.about) -> navController.navigate("about")
-                stringResource(R.string.preference) -> navController.navigate("preference")
+                gameLabel -> navController.navigate("game")
+                aboutLabel -> navController.navigate("about")
+                prefLabel -> navController.navigate("preference")
             }
         }
     )

@@ -14,6 +14,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,8 +35,6 @@ import androidx.compose.runtime.collectAsState
 import com.example.dave_3600_mappeprosjekt1.ui.components.visualizing_components.AdditionVisualizer
 
 
-
-
 /*
 
 TODO:
@@ -52,10 +51,12 @@ fun GamePage(
 
     )
 
-)
-
-{
+) {
     val gameUiState by gameViewModel.uiState.collectAsState()
+
+    LaunchedEffect(Unit) {
+        gameViewModel.resetGame()
+    }
     Scaffold(
         topBar = {
             TopBar(
@@ -64,107 +65,116 @@ fun GamePage(
             )
         }
     ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize()
-                .padding(25.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
+        gameUiState.currentAddition?.let {
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize()
+                    .padding(25.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
 
-            GameLayout(
-                onUserGuessChanged = { gameViewModel.updateUserGuess(it) },
-                currentAddition = gameViewModel.currentAddition,
-                userGuess = gameViewModel.userGuess,
-                additionList = stringArrayResource(R.array.addition_array),
-                userScore =  gameUiState.score,
-                isAnswerWrong = gameUiState.isAnswerWrong,
+                GameLayout(
+                    onUserGuessChanged = { gameViewModel.updateUserGuess(it) },
+                    currentAddition = gameViewModel.currentAddition,
+                    userGuess = gameViewModel.userGuess,
+                    additionList = stringArrayResource(R.array.addition_array),
+                    userScore = gameUiState.score,
+                    isAnswerWrong = gameUiState.isAnswerWrong,
 
 
-            )
-            Keyboard(
-                onDigitClick = { digit -> gameViewModel.addDigit(digit) },
-                onDeleteClick = { gameViewModel.deleteLast() },
-                onSubmitClick = { gameViewModel.submitAnswer() }
-            )
+                    )
+                Keyboard(
+                    onDigitClick = { digit -> gameViewModel.addDigit(digit) },
+                    onDeleteClick = { gameViewModel.deleteLast() },
+                    onSubmitClick = { gameViewModel.submitAnswer() }
+                )
+            }
+            if (gameUiState.isAnswerWrong) {
+                DialogAlert(
+
+                    dialogTitle = "Wrong answer",
+                    dialogText = {
+                        AdditionVisualizer(
+                            gameUiState.currentAddition,
+                            modifier = Modifier.padding(16.dp)
+                        )
+                    },
+                    confirmButton = {
+                        Button(onClick = { gameViewModel.tryAgain() }) {
+                            Text("Confirm")
+                        }
+                    }
+                )
+            }
+            if (gameUiState.isGameOver) {
+                DialogAlert(
+                    dialogTitle = "Game over!",
+                    dialogText = {
+                        Text("Final score: ${gameUiState.score} / ${gameUiState.gameLength}")
+                    },
+                    confirmButton = {
+                        Button(onClick = { gameViewModel.resetGame() }) {
+                            Text("Restart game")
+                        }
+                    },
+                    dismissButton = {
+                        Button(onClick = { navController.navigateUp() }) {
+                            Text("Home")
+                        }
+                    }
+                )
+            }
+
         }
-        if(gameUiState.isAnswerWrong){
-            DialogAlert(
-                
-                dialogTitle = "Wrong answer",
-                dialogText = {
-                    AdditionVisualizer(gameUiState.currentAddition, modifier = Modifier.padding(16.dp))
-                },
-                confirmButton = {
-                    Button(onClick = {gameViewModel.tryAgain()}) {
-                    Text("Confirm")
-                }  }
-            )
-        }
-        if(gameUiState.isGameOver){
-            DialogAlert(
-                dialogTitle = "Game over!",
-                dialogText = {
-                    Text("Final score: ${gameUiState.score} / ${gameUiState.gameLength}")
-                },
-                confirmButton = { Button(onClick = {gameViewModel.resetGame()}) {
-                    Text("Restart game")
-                } },
-                dismissButton = { Button(onClick = {navController.navigateUp()}){
-                    Text("Home")
-                } }
-            )
-        }
-
     }
 }
-
-@Composable
-fun GameLayout(
-    modifier: Modifier = Modifier,
-    onUserGuessChanged: (String) -> Unit,
-    currentAddition: ShowAddition,
-    userGuess: String,
-    additionList: Array<String>,
-    userScore: Int,
-    isAnswerWrong: Boolean
-){
-    Card(
-        modifier = modifier,
-        elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
-    ){
-        Column(
-            verticalArrangement = Arrangement.spacedBy(1.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(16.dp)
+    @Composable
+    fun GameLayout(
+        modifier: Modifier = Modifier,
+        onUserGuessChanged: (String) -> Unit,
+        currentAddition: ShowAddition,
+        userGuess: String,
+        additionList: Array<String>,
+        userScore: Int,
+        isAnswerWrong: Boolean
+    ) {
+        Card(
+            modifier = modifier,
+            elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
         ) {
-            Text(
-                text = "Solve: ${currentAddition.a} + ${currentAddition.b} = ?"
-            )
-            Text(
-                text = "Score: $userScore"
-            )
+            Column(
+                verticalArrangement = Arrangement.spacedBy(1.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(16.dp)
+            ) {
+                Text(
+                    text = "Solve: ${currentAddition.a} + ${currentAddition.b} = ?"
+                )
+                Text(
+                    text = "Score: $userScore"
+                )
+
+            }
 
         }
+        OutlinedTextField(
+            value = userGuess,
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth(),
+            onValueChange = onUserGuessChanged,
+            label = { Text(stringResource(R.string.enter_your_answer)) },
+            isError = isAnswerWrong,
+        )
 
     }
-    OutlinedTextField(
-        value = userGuess,
-        singleLine = true,
-        modifier = Modifier.fillMaxWidth(),
-        onValueChange = onUserGuessChanged,
-        label = { Text(stringResource(R.string.enter_your_answer)) },
-        isError = isAnswerWrong,
-    )
 
-}
+    @Composable
+    fun Display(input: String) {
+        Text(input)
+    }
 
-
-@Composable
-fun Display(input: String){
-    Text(input)
-}
 
 
 
