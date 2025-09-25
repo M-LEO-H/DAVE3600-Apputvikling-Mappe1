@@ -26,10 +26,11 @@ import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 
 @Composable
 fun AdditionVisualizer(
-    addition: ShowAddition,
+    addition: ShowAddition?,
     modifier: Modifier = Modifier,
     rowSize: Int = 5
 ) {
+    if (addition == null) return
     val aInt = addition.a.toIntOrNull() ?: 0
     val bInt = addition.b.toIntOrNull() ?: 0
 

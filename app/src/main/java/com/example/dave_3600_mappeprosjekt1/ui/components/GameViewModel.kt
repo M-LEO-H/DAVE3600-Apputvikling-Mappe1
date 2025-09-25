@@ -26,6 +26,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var gameAdditions: MutableList<ShowAddition>
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
     lateinit var currentAddition: ShowAddition
+    private var firstGuess = true
 
 
 
@@ -48,9 +49,9 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    fun getNextAddition(): ShowAddition {
+    fun getNextAddition(): ShowAddition? {
         if(gameAdditions.isEmpty()) {
-            return ShowAddition("","","")
+            return null
         }
         //Takes and removes the first class from the list and sets it in currentAddition
         currentAddition = gameAdditions.removeAt(0)
@@ -62,9 +63,12 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     fun resetGame(){
         getRandomAdditionsList()
         userGuess = ""
-        _uiState.value = GameUiState(currentAddition = getNextAddition())
-        _uiState.value = GameUiState(isAnswerWrong = false)
-        _uiState.value = GameUiState(score = 0)
+        _uiState.value = GameUiState(
+            currentAddition = getNextAddition(),
+            isAnswerWrong = false,
+            isGameOver = false,
+            score = 0,
+            )
 
     }
 
@@ -84,42 +88,49 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
        }
     }
 
+
     fun submitAnswer(){
-        if(userGuess.isNotEmpty()){
-            if(checkAnswer(userGuess, currentAddition.answer)){
-                userGuess = ""
-                _uiState.update { it ->
-                    it.copy(
-                        score = it.score + 1,
-                        currentAddition = getNextAddition()
-                    )
-                }
-
-
-            } else {
-                /*TODO*/
-                _uiState.update { it ->
-                    it.copy(
-                        isAnswerWrong = true
-                    )
-                }
-                userGuess = ""
-
-            }
-            if(isGameOver()){
-                _uiState.update { it ->
-                    it.copy(
-                        isGameOver = true
-                    )
-                }
-            }
-
+        if(checkAnswer(userGuess, currentAddition.answer)){
+            correctAnswer()
+        } else {
+            wrongAnswer()
         }
+        userGuess = ""
+    }
 
-        /*TODO*/
+    fun correctAnswer(){
+        var addScore = 0
+        if(firstGuess){
+            addScore = 1
+        }
+        if(isGameOver()){
+            _uiState.update { it ->
+                it.copy(
+                    score = it.score + addScore,
+                    isGameOver = true
+                )
+            }
+
+        } else {
+            _uiState.update { it ->
+                it.copy(
+                    score = it.score + addScore,
+                    currentAddition = getNextAddition()
+                )
+            }
+            firstGuess = true
+        }
 
     }
 
+    fun wrongAnswer(){
+        firstGuess = false
+        _uiState.update {it ->
+            it.copy(
+                isAnswerWrong = true
+            )
+        }
+    }
     fun checkAnswer(userGuess : String, correctAnswer: String): Boolean{
         return userGuess == correctAnswer
     }
