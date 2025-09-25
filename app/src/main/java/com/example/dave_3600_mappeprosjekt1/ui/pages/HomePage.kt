@@ -8,7 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.dave_3600_mappeprosjekt1.R
-import com.example.dave_3600_mappeprosjekt1.ui.components.OptionsScreen
+import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.OptionsScreen
 import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 
 @Composable

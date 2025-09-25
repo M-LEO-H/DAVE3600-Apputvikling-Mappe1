@@ -4,13 +4,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-
+import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.DeleteButton
+import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.StringButton
+import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.SubmitButton
 
 
 @Composable
@@ -51,7 +51,7 @@ fun Keyboard(
             Row {
                 StringButton("0", onClick = onDigitClick)
                 DeleteButton(onDeleteClick = onDeleteClick)
-                SubmitButton (onSubmitClick = onSubmitClick)
+                SubmitButton(onSubmitClick = onSubmitClick)
 
             }
 

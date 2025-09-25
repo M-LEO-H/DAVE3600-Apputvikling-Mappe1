@@ -1,11 +1,9 @@
-package com.example.dave_3600_mappeprosjekt1.ui.components
+package com.example.dave_3600_mappeprosjekt1.ui.components.dialogs
 
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview

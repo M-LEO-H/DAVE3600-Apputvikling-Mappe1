@@ -1,9 +1,8 @@
-package com.example.dave_3600_mappeprosjekt1.ui.components
+package com.example.dave_3600_mappeprosjekt1.ui.components.visualizing_components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import kotlin.math.min
 
 @Composable
 fun DotRows(total: Int, color: Color, rowSize: Int) {

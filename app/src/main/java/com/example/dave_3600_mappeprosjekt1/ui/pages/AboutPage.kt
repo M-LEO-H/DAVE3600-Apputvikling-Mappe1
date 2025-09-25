@@ -17,12 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import com.example.dave_3600_mappeprosjekt1.R
-import com.example.dave_3600_mappeprosjekt1.ui.components.AppNavHost
-import com.example.dave_3600_mappeprosjekt1.ui.components.RadioButtonListHorizontal
 import com.example.dave_3600_mappeprosjekt1.ui.components.TopBar
-import com.example.dave_3600_mappeprosjekt1.ui.components.UnderTitle
 
 @Composable
 fun AboutPage(navController: NavController? = null){

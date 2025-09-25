@@ -1,4 +1,4 @@
-package com.example.dave_3600_mappeprosjekt1.ui.components
+package com.example.dave_3600_mappeprosjekt1.ui.components.visualizing_components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

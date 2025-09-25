@@ -4,7 +4,6 @@ import DialogAlert
 import android.app.Application
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,14 +15,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,10 +29,9 @@ import com.example.dave_3600_mappeprosjekt1.ui.components.Keyboard
 import com.example.dave_3600_mappeprosjekt1.ui.components.TopBar
 import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.dave_3600_mappeprosjekt1.ui.data.GameUiState
 import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 import androidx.compose.runtime.collectAsState
-import com.example.dave_3600_mappeprosjekt1.ui.components.AdditionVisualizer
+import com.example.dave_3600_mappeprosjekt1.ui.components.visualizing_components.AdditionVisualizer
 
 
 
