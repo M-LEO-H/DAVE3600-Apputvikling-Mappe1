@@ -27,7 +27,7 @@ import androidx.navigation.NavController
 import com.example.dave_3600_mappeprosjekt1.R
 import com.example.dave_3600_mappeprosjekt1.ui.components.GameViewModel
 import com.example.dave_3600_mappeprosjekt1.ui.components.TopBar
-import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
+import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
 
 @Composable
@@ -87,7 +87,7 @@ fun PreferencePagePreviewInteractive() {
 
     val lengths = listOf(5, 10, 15) // you can also use integerArrayResource if in a real app
 
-    DAVE3600Mappeprosjekt1Theme {
+    AppTheme {
         Scaffold(topBar = { TopBar("Preference") }) { innerPadding ->
             Column(
                 modifier = Modifier.padding(innerPadding).fillMaxSize(),

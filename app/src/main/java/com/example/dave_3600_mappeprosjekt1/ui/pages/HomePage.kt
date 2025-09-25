@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.dave_3600_mappeprosjekt1.R
 import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.OptionsScreen
-import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
+import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
 @Composable
 fun HomePage(navController: NavHostController){
@@ -34,7 +34,7 @@ fun HomePage(navController: NavHostController){
 fun PreviewHomePage() {
     val context = LocalContext.current
     val fakeNavController = rememberNavController() // Works in preview
-    DAVE3600Mappeprosjekt1Theme {
+    AppTheme {
         HomePage(navController = fakeNavController)
     }
 }

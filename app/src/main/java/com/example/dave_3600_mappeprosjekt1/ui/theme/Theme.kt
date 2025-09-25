@@ -1,6 +1,5 @@
 package com.example.dave_3600_mappeprosjekt1.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -12,15 +11,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = primaryLight,
+    onPrimary = onPrimaryLight,
+    background = backgroundLight,
+    surface = surfaceLight,
+    secondary = secondaryLight,
+    tertiary = tertiaryLight,
+    error = errorLight,
+    onError = onErrorLight
 )
 
+
+
+
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = primaryLight,
+    onPrimary = onPrimaryLight,
+    background = backgroundLight,
+    surface = surfaceLight,
+    secondary = secondaryLight,
+    tertiary = tertiaryLight,
+    onTertiary = onTertiaryLight,
+    error = errorLight,
+    onError = onErrorLight
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -34,7 +47,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun DAVE3600Mappeprosjekt1Theme(
+fun AppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

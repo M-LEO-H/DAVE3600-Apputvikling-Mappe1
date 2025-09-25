@@ -13,19 +13,20 @@ import com.example.dave_3600_mappeprosjekt1.ui.pages.AboutPage
 import com.example.dave_3600_mappeprosjekt1.ui.pages.GamePage
 import com.example.dave_3600_mappeprosjekt1.ui.pages.HomePage
 import com.example.dave_3600_mappeprosjekt1.ui.pages.PreferencePage
-import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
+import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            DAVE3600Mappeprosjekt1Theme {
+
+            AppTheme {
                 val navController = rememberNavController()
 
                 NavHost(
                     navController,
-                    startDestination = "home")
+                    startDestination = "game")
                 {
                     composable("home") {
                         HomePage(navController)
@@ -49,7 +50,7 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun GreetingPreview() {
-    DAVE3600Mappeprosjekt1Theme {
+    AppTheme {
 
     }
 }

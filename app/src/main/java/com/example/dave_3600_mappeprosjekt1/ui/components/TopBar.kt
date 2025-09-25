@@ -13,7 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
+import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
 
 //Top bar with back button and title
@@ -25,7 +25,7 @@ fun TopBar(
 ) {
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            containerColor = MaterialTheme.colorScheme.secondary,
             titleContentColor = MaterialTheme.colorScheme.primary,
             ),
             title = {
@@ -51,7 +51,7 @@ fun TopBar(
 @Preview
 @Composable
 fun TopBarPreview(){
-    DAVE3600Mappeprosjekt1Theme {
+    AppTheme {
         TopBar("Preference", onBackClick = {})
     }
 }

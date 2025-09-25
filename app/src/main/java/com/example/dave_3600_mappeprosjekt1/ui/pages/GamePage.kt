@@ -27,7 +27,7 @@ import com.example.dave_3600_mappeprosjekt1.R
 import com.example.dave_3600_mappeprosjekt1.ui.components.GameViewModel
 import com.example.dave_3600_mappeprosjekt1.ui.components.Keyboard
 import com.example.dave_3600_mappeprosjekt1.ui.components.TopBar
-import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
+import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 import androidx.compose.runtime.collectAsState
@@ -174,7 +174,7 @@ fun Display(input: String){
 @Composable
 fun GamePagePreview() {
     val fakeNavController = NavHostController(LocalContext.current)
-    DAVE3600Mappeprosjekt1Theme {
+    AppTheme {
         GamePage(navController = fakeNavController)
     }
 }

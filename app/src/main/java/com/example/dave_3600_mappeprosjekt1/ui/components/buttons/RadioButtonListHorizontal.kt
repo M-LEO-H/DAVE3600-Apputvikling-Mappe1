@@ -7,6 +7,7 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -16,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.dave_3600_mappeprosjekt1.ui.theme.DAVE3600Mappeprosjekt1Theme
+import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
 @Composable
 fun RadioButtonListHorizontal(listOptions: List<String>, modifier: Modifier = Modifier ) {
@@ -37,7 +38,11 @@ fun RadioButtonListHorizontal(listOptions: List<String>, modifier: Modifier = Mo
             ) {
                RadioButton(
                    selected = (text == selectedOption),
-                   onClick = null
+                   onClick = null,
+                   colors = RadioButtonDefaults.colors(
+                       selectedColor = MaterialTheme.colorScheme.primary,
+                       unselectedColor = MaterialTheme.colorScheme.onBackground
+                   )
                )
                 Text(
                     text = text,
@@ -52,7 +57,7 @@ fun RadioButtonListHorizontal(listOptions: List<String>, modifier: Modifier = Mo
 @Preview(showBackground = true)
 @Composable
 fun RadioButtonPreview() {
-    DAVE3600Mappeprosjekt1Theme {
+    AppTheme {
         val list = listOf( "Norwegian", "German")
         RadioButtonListHorizontal(list)
     }
