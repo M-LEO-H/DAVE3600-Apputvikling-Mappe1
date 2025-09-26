@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
 
                 NavHost(
                     navController,
-                    startDestination = "game")
+                    startDestination = "home")
                 {
                     composable("home") {
                         HomePage(navController)

@@ -3,10 +3,14 @@ package com.example.dave_3600_mappeprosjekt1.ui.pages
 import DialogAlert
 import android.app.Application
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -64,6 +68,7 @@ fun GamePage(
                 onBackClick = { navController.navigateUp() }
             )
         }
+
     ) { innerPadding ->
         gameUiState.currentAddition?.let {
             Column(
@@ -140,35 +145,57 @@ fun GamePage(
         userScore: Int,
         isAnswerWrong: Boolean
     ) {
-        Card(
-            modifier = modifier,
-            elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
-        ) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(1.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(16.dp)
+        Column(
+            modifier = modifier
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+
+
+        )
+        {
+            Card(
+                elevation = CardDefaults.cardElevation(defaultElevation = 3.dp),
+
+            ){
+                Text(
+                    text = "Score : $userScore"
+                )
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Card(
+                modifier = modifier.
+                fillMaxWidth().
+                wrapContentHeight(),
+
+                elevation = CardDefaults.cardElevation(defaultElevation = 3.dp),
+
             ) {
+
                 Text(
                     text = "Solve: ${currentAddition.a} + ${currentAddition.b} = ?"
                 )
-                Text(
-                    text = "Score: $userScore"
-                )
+
+
+
 
             }
-
+            OutlinedTextField(
+                value = userGuess,
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth(),
+                onValueChange = onUserGuessChanged,
+                label = { Text(stringResource(R.string.enter_your_answer)) },
+                isError = isAnswerWrong,
+            )
         }
-        OutlinedTextField(
-            value = userGuess,
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth(),
-            onValueChange = onUserGuessChanged,
-            label = { Text(stringResource(R.string.enter_your_answer)) },
-            isError = isAnswerWrong,
-        )
+
+
+
 
     }
+
+
 
     @Composable
     fun Display(input: String) {
