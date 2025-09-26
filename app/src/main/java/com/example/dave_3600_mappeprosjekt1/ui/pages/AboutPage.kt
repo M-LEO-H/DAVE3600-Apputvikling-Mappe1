@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.navigation.NavController
 import com.example.dave_3600_mappeprosjekt1.R
-import com.example.dave_3600_mappeprosjekt1.ui.components.TopBar
+import com.example.dave_3600_mappeprosjekt1.ui.components.nav.TopBar
 
 @Composable
 fun AboutPage(navController: NavController? = null){

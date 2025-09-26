@@ -14,33 +14,30 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun OptionsScreen(
+fun <T> OptionsScreen(
     modifier: Modifier = Modifier,
-    options: List<String>,
-    onOptionClick: (String) -> Unit
+    options: List<T>,
+    onOptionClick: (T) -> Unit,
+    optionLabel: (T) -> String = { it.toString() } // function to get display string
 ) {
-    Box(modifier = modifier.fillMaxSize(),
+    Box(
+        modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
-        ) {
+    ) {
         LazyColumn(
-                    modifier = modifier
-                    .align(Alignment.Center)
+            modifier = modifier.align(Alignment.Center),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-                items(options) { option ->
-                    Button(onClick = { onOptionClick(option)},modifier.width(240.dp)) {
-                        Text(option)}
-
+            items(options) { option ->
+                Button(
+                    onClick = { onOptionClick(option) },
+                    modifier = Modifier.width(240.dp)
+                ) {
+                    Text(optionLabel(option))
                 }
             }
-
+        }
     }
-
 }
-/*
-@Preview
-@Composable
-fun OptionsScreenPreview() {
-    OptionsScreen(options = listOf("Option 1", "Option 2", "Option 3"))
-}*/
 
 

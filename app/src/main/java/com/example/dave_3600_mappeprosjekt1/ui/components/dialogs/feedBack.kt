@@ -9,7 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
-
+//TODO: Fix hardcoded strings -> string file
 @Composable
 fun Feedback(result : Boolean) {
         if (result) {

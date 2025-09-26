@@ -1,7 +1,6 @@
 package com.example.dave_3600_mappeprosjekt1.ui.pages
 
 import DialogAlert
-import android.app.Application
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,29 +17,23 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.dave_3600_mappeprosjekt1.R
 import com.example.dave_3600_mappeprosjekt1.ui.components.GameViewModel
-import com.example.dave_3600_mappeprosjekt1.ui.components.Keyboard
-import com.example.dave_3600_mappeprosjekt1.ui.components.TopBar
-import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
-import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.Keyboard
+import com.example.dave_3600_mappeprosjekt1.ui.components.nav.TopBar
 import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 import androidx.compose.runtime.collectAsState
 import com.example.dave_3600_mappeprosjekt1.ui.components.visualizing_components.AdditionVisualizer
 
 
-/*
 
-TODO:
 
-NPR MAN STARTET SPILL OPPDATERES IKKE CURRENT ADDITION. DETTE SKAPER BUG PÅ FØRSTE RUNDE
- */
+//TODO: Fix hardcoded string -> string file
+
 @Composable
 fun GamePage(
     navController: NavHostController,

@@ -1,4 +1,4 @@
-package com.example.dave_3600_mappeprosjekt1.ui.components
+package com.example.dave_3600_mappeprosjekt1.ui.components.buttons
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,9 +8,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.DeleteButton
-import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.StringButton
-import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.SubmitButton
 
 
 @Composable
@@ -59,13 +56,6 @@ fun Keyboard(
     }
 }
 
-
-
-
-@Composable
-fun Display() {
-    Text("")
-}
 
 
 /*

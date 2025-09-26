@@ -9,7 +9,7 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.lifecycle.ViewModel
 import com.example.dave_3600_mappeprosjekt1.R
 import com.example.dave_3600_mappeprosjekt1.ui.data.GameUiState
-import com.example.dave_3600_mappeprosjekt1.ui.data.getRandomAdditionsList
+
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
@@ -31,7 +31,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    fun getRandomAdditionsList() {
+    private fun getRandomAdditionsList() {
 
         gameAdditions = allAdditions
             .toList()
@@ -49,7 +49,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    fun getNextAddition(): ShowAddition? {
+    private fun getNextAddition(): ShowAddition? {
         if(gameAdditions.isEmpty()) {
             return null
         }
@@ -63,7 +63,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     fun resetGame(){
         getRandomAdditionsList()
         userGuess = ""
-        _uiState.value = GameUiState(
+        _uiState.value = _uiState.value.copy(
             currentAddition = getNextAddition(),
             isAnswerWrong = false,
             isGameOver = false,
@@ -95,7 +95,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         userGuess = ""
     }
 
-    fun correctAnswer(){
+    private fun correctAnswer(){
         var addScore = 0
         if(firstGuess){
             addScore = 1
@@ -120,7 +120,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun wrongAnswer(){
+    private fun wrongAnswer(){
         firstGuess = false
         _uiState.update {it ->
             it.copy(
@@ -128,7 +128,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             )
         }
     }
-    fun checkAnswer(userGuess : String, correctAnswer: String): Boolean{
+    private fun checkAnswer(userGuess : String, correctAnswer: String): Boolean{
         return userGuess == correctAnswer
     }
 
