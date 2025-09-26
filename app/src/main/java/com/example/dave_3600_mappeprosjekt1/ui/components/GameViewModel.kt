@@ -155,7 +155,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun isGameOver(): Boolean {
+    private fun isGameOver(): Boolean {
         return gameAdditions.isEmpty()
 
     }

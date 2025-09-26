@@ -26,23 +26,7 @@ class MainActivity : ComponentActivity() {
             AppTheme {
                 AppNavHost(navController, gameViewModel)
 
-                /*NavHost(
-                    navController,
-                    startDestination = "home")
-                {
-                    composable("home") {
-                        HomePage(navController)
-                    }
-                    composable("game") {
-                        GamePage(navController, gameViewModel)
-                    }
-                    composable("about") {
-                        AboutPage(navController)
-                    }
-                    composable("preference", ) {
-                        PreferencePage(navController, gameViewModel)
-                    }
-                }*/
+                //TODO: make app icon
 
             }
         }
