@@ -67,8 +67,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             currentAddition = getNextAddition(),
             isAnswerWrong = false,
             isGameOver = false,
-            score = 0,
-            gameLength = _uiState.value.gameLength
+            score = 0
             )
 
     }

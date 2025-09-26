@@ -34,12 +34,7 @@ import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 @Composable
 fun PreferencePage(
     navController: NavController,
-    gameViewModel: GameViewModel = viewModel(
-        factory = androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory(
-            LocalContext.current.applicationContext as Application
-        )
-
-    )
+    gameViewModel: GameViewModel
 ){
     val lengths = integerArrayResource(id = R.array.game_lengths).toList()
     val uiState by gameViewModel.uiState.collectAsState()
@@ -54,6 +49,7 @@ fun PreferencePage(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
             ) {
+            //TODO: change how the selected button looks like (mby inverting colour on button + increase text size)
             items(lengths) { length ->
                 Button(
                     onClick = { gameViewModel.updateGameLength(length) },

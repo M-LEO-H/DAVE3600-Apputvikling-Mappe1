@@ -6,9 +6,13 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.dave_3600_mappeprosjekt1.ui.components.AppNavHost
+import com.example.dave_3600_mappeprosjekt1.ui.components.GameViewModel
 import com.example.dave_3600_mappeprosjekt1.ui.pages.AboutPage
 import com.example.dave_3600_mappeprosjekt1.ui.pages.GamePage
 import com.example.dave_3600_mappeprosjekt1.ui.pages.HomePage
@@ -20,27 +24,31 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
+            val gameViewModel: GameViewModel = viewModel(
+                factory = ViewModelProvider.AndroidViewModelFactory(application)
+            )
 
             AppTheme {
-                val navController = rememberNavController()
+                AppNavHost(navController, gameViewModel)
 
-                NavHost(
+                /*NavHost(
                     navController,
-                    startDestination = "game")
+                    startDestination = "home")
                 {
                     composable("home") {
                         HomePage(navController)
                     }
                     composable("game") {
-                        GamePage(navController)
+                        GamePage(navController, gameViewModel)
                     }
                     composable("about") {
                         AboutPage(navController)
                     }
-                    composable("preference") {
-                        PreferencePage(navController)
+                    composable("preference", ) {
+                        PreferencePage(navController, gameViewModel)
                     }
-                }
+                }*/
 
             }
         }

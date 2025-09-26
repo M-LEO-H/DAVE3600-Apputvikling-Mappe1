@@ -44,14 +44,8 @@ NPR MAN STARTET SPILL OPPDATERES IKKE CURRENT ADDITION. DETTE SKAPER BUG PÅ FØ
 @Composable
 fun GamePage(
     navController: NavHostController,
-    gameViewModel: GameViewModel = viewModel(
-        factory = androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory(
-            LocalContext.current.applicationContext as Application
-        )
-
-    )
-
-) {
+    gameViewModel: GameViewModel)
+{
     val gameUiState by gameViewModel.uiState.collectAsState()
 
     LaunchedEffect(Unit) {
@@ -108,10 +102,12 @@ fun GamePage(
                     }
                 )
             }
+            //TODO: Change all hardcoded strings -> string Resource
             if (gameUiState.isGameOver) {
                 DialogAlert(
                     dialogTitle = "Game over!",
                     dialogText = {
+                        //TODO: final score length shows default 10 length even though game length is fifferece
                         Text("Final score: ${gameUiState.score} / ${gameUiState.gameLength}")
                     },
                     confirmButton = {
@@ -177,6 +173,7 @@ fun GamePage(
 
 
 
+/*
 
 @Preview(name = "English")
 @Preview(name = "Norsk", locale = "nb")
@@ -187,4 +184,4 @@ fun GamePagePreview() {
     AppTheme {
         GamePage(navController = fakeNavController)
     }
-}
+}*/
