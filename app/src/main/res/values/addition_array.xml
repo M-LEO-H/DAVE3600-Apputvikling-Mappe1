@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--TODO: Change values of addition so Visuzalizer works in alert box -->
     <!-- A String array of random additions. It is in the structure of a, b, answer -->
     <string-array name="addition_array">
         <item>3,5,8</item>

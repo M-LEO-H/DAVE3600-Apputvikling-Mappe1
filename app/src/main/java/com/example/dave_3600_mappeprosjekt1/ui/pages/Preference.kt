@@ -1,12 +1,9 @@
 package com.example.dave_3600_mappeprosjekt1.ui.pages
 
-import android.app.Application
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -18,57 +15,50 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.integerArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.dave_3600_mappeprosjekt1.R
 import com.example.dave_3600_mappeprosjekt1.ui.components.GameViewModel
-import com.example.dave_3600_mappeprosjekt1.ui.components.TopBar
+import com.example.dave_3600_mappeprosjekt1.ui.components.nav.TopBar
+import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.OptionsScreen
 import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
 
 @Composable
 fun PreferencePage(
     navController: NavController,
-    gameViewModel: GameViewModel = viewModel(
-        factory = androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory(
-            LocalContext.current.applicationContext as Application
-        )
-
-    )
-){
+    gameViewModel: GameViewModel
+) {
     val lengths = integerArrayResource(id = R.array.game_lengths).toList()
     val uiState by gameViewModel.uiState.collectAsState()
+
+
+    //TODO: Fix how selected button looks, mby invert colour + increase text size if selected
     Scaffold(
-            topBar = {
-                TopBar(stringResource(id = R.string.preference),
-                onBackClick = { navController.navigateUp()})}
-
-    ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier.padding(innerPadding).fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-            ) {
-            items(lengths) { length ->
-                Button(
-                    onClick = { gameViewModel.updateGameLength(length) },
-                    modifier = Modifier.padding(8.dp)
-                ) {
-                    val isSelected = uiState.gameLength == length
-                    Text(if (isSelected) "✅ $length" else length.toString())
-                }
-            }
-
-
-
+        topBar = {
+            TopBar(
+                stringResource(id = R.string.preference),
+                onBackClick = { navController.navigateUp() }
+            )
         }
+    ) { innerPadding ->
+        OptionsScreen(
+            modifier = Modifier.padding(innerPadding),
+            options = lengths,
+            onOptionClick = { length ->
+                gameViewModel.updateGameLength(length)
+            },
+            optionLabel = { length ->
+                val isSelected = uiState.gameLength == length
+                if (isSelected) "✅ $length" else length.toString()
+            }
+        )
     }
 }
+
 
 
 /*

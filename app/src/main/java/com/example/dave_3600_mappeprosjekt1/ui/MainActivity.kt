@@ -6,13 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
-import com.example.dave_3600_mappeprosjekt1.ui.pages.AboutPage
-import com.example.dave_3600_mappeprosjekt1.ui.pages.GamePage
-import com.example.dave_3600_mappeprosjekt1.ui.pages.HomePage
-import com.example.dave_3600_mappeprosjekt1.ui.pages.PreferencePage
+import com.example.dave_3600_mappeprosjekt1.ui.components.nav.AppNavHost
+import com.example.dave_3600_mappeprosjekt1.ui.components.GameViewModel
 import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,27 +18,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
+            val gameViewModel: GameViewModel = viewModel(
+                factory = ViewModelProvider.AndroidViewModelFactory(application)
+            )
 
             AppTheme {
-                val navController = rememberNavController()
+                AppNavHost(navController, gameViewModel)
 
-                NavHost(
-                    navController,
-                    startDestination = "game")
-                {
-                    composable("home") {
-                        HomePage(navController)
-                    }
-                    composable("game") {
-                        GamePage(navController)
-                    }
-                    composable("about") {
-                        AboutPage(navController)
-                    }
-                    composable("preference") {
-                        PreferencePage(navController)
-                    }
-                }
+                //TODO: make app icon
 
             }
         }

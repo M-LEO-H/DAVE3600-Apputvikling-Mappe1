@@ -5,8 +5,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
 @Composable
 fun SubmitButton(

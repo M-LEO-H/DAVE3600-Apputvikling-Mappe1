@@ -8,8 +8,10 @@
     <string name="aboutTitle">About The Game</string>
     <string name="aboutText">This game is about teaching young children simple additions. The game will give the user a set of questions ranging from; 5, 10, and 15 questions. After each answers given, the game will give you feedback on weather you were correct or not,  with illustrations and explainations of what the correct answer is.</string>
     <string name="enter_your_answer">Enter Your Answer</string>
+    <string name="home">Home</string>
 
-    <string-array name="home_screen_options">
+    <string-array name="navigation_screen_options">
+        <item>@string/home</item>
         <item>@string/game</item>
         <item>@string/about</item>
         <item>@string/preference</item>
