@@ -48,7 +48,7 @@ fun Keyboard(
             Row {
                 StringButton("0", onClick = onDigitClick)
                 DeleteButton(onDeleteClick = onDeleteClick)
-                SubmitButton(onSubmitClick = onSubmitClick)
+                SubmitButton (onSubmitClick = onSubmitClick)
 
             }
 

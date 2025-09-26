@@ -10,7 +10,7 @@ lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.3"
 lifecycleViewmodel = "2.9.3"
 viewmodel = "1.1.1"
-androidx-lifecycle = "2.7.0"
+androidx-lifecycle = "2.8.6"
 
 # Use the latest stable Compose BOM
 composeBom = "2025.08.01"
@@ -37,6 +37,7 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-navigation-compose-jvmstubs = { group = "androidx.navigation", name = "navigation-compose-jvmstubs", version.ref = "navigationComposeJvmstubs" }
 androidx-compose-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidx-lifecycle" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
