@@ -4,6 +4,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -45,18 +48,18 @@ fun PreferencePage(
             )
         }
     ) { innerPadding ->
-        OptionsScreen(
-            modifier = Modifier.padding(innerPadding),
-            options = lengths,
-            onOptionClick = { length ->
-                gameViewModel.updateGameLength(length)
-            },
-            optionLabel = { length ->
-                val isSelected = uiState.gameLength == length
-                if (isSelected) "✅ $length" else length.toString()
-            }
-        )
-    }
+            OptionsScreen(
+                modifier = Modifier.padding(innerPadding),
+                options = lengths,
+                onOptionClick = { length ->
+                    gameViewModel.updateGameLength(length)
+                },
+                optionLabel = { length ->
+                    val isSelected = uiState.gameLength == length
+                    if (isSelected) "✅ $length" else length.toString()
+                }
+            )
+        }
 }
 
 

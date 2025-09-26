@@ -41,9 +41,6 @@ fun GamePage(
 {
     val gameUiState by gameViewModel.uiState.collectAsState()
 
-    LaunchedEffect(Unit) {
-        gameViewModel.resetGame()
-    }
     Scaffold(
         topBar = {
             TopBar(
