@@ -67,7 +67,8 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             currentAddition = getNextAddition(),
             isAnswerWrong = false,
             isGameOver = false,
-            score = 0
+            score = 0,
+            quitDialog = false
             )
 
     }
@@ -120,6 +121,21 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
+    fun backClick(){
+        _uiState.update { it ->
+            it.copy(
+                quitDialog = true
+            )
+        }
+    }
+
+    fun dismissBackClick(){
+        _uiState.update { it ->
+            it.copy(
+                quitDialog = false
+            )
+        }
+    }
     private fun wrongAnswer(){
         firstGuess = false
         _uiState.update {it ->

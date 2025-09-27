@@ -6,4 +6,5 @@ data class GameUiState(
     val isAnswerWrong: Boolean = false,
     val isGameOver: Boolean = false,
     val score: Int = 0,
+    val quitDialog: Boolean = false
 )

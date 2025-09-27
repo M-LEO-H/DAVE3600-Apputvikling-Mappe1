@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -32,6 +33,7 @@ import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.Keyboard
 import com.example.dave_3600_mappeprosjekt1.ui.components.nav.TopBar
 import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.dave_3600_mappeprosjekt1.ui.components.visualizing_components.AdditionVisualizer
@@ -52,7 +54,7 @@ fun GamePage(
         topBar = {
             TopBar(
                 stringResource(id = R.string.game),
-                onBackClick = { navController.navigateUp() }
+                onBackClick = { gameViewModel.backClick() }
             )
         }
     ) { innerPadding ->
@@ -87,10 +89,17 @@ fun GamePage(
                 }
             }
 
+
+
+
             if (gameUiState.isAnswerWrong) {
                 DialogAlert(
 
-                    dialogTitle = "Wrong answer",
+                    dialogTitle = {
+                        Text(
+                            text = "Wrong answer!",
+                        )
+                    },
                     dialogText = {
                         AdditionVisualizer(
                             gameUiState.currentAddition,
@@ -107,7 +116,11 @@ fun GamePage(
             //TODO: Change all hardcoded strings -> string Resource
             if (gameUiState.isGameOver) {
                 DialogAlert(
-                    dialogTitle = "Game over!",
+                    dialogTitle =  {
+                        Text(
+                            text = "Game over",
+                        )
+                    },
                     dialogText = {
                         //TODO: final score length shows default 10 length even though game length is fifferece
                         Text("Final score: ${gameUiState.score} / ${gameUiState.gameLength}")
@@ -126,49 +139,60 @@ fun GamePage(
             }
 
         }
+        if(gameUiState.quitDialog){
+            DialogAlert(
+                dialogTitle = {
+                    Text(
+                        text="Do you want to leave?",
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+
+                },
+                dialogText = {
+                    Text(
+                        text="Your game process will be reset!",
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+
+                },
+                dismissButton = {
+                    Button(onClick = { gameViewModel.dismissBackClick() },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.primary,
+                            contentColor = MaterialTheme.colorScheme.onPrimary
+                        )
+
+
+                    ) {
+                        Text(
+                            text = "Stay",
+                            textAlign = TextAlign.Center,
+
+                        )
+                    }
+                },
+                confirmButton = {
+                    Button(onClick = {
+                        gameViewModel.resetGame()
+                        navController.navigateUp() },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.error,
+                            contentColor = MaterialTheme.colorScheme.onError
+                        )
+
+
+
+                    ) {
+                        Text("Leave")
+                    }
+                }
+            )
+        }
     }
 }
-/*
-    @Composable
-    fun GameLayout(
-        modifier: Modifier = Modifier,
-        onUserGuessChanged: (String) -> Unit,
-        currentAddition: ShowAddition,
-        userGuess: String,
-        additionList: Array<String>,
-        userScore: Int,
-        isAnswerWrong: Boolean
-    ) {
-        Card(
-            modifier = modifier,
-            elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
-        ) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(1.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(16.dp)
-            ) {
-                Text(
-                    text = "Solve: ${currentAddition.a} + ${currentAddition.b} = ?"
-                )
-                Text(
-                    text = "Score: $userScore"
-                )
 
-            }
-
-        }
-        OutlinedTextField(
-            value = userGuess,
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth(),
-            onValueChange = onUserGuessChanged,
-            label = { Text(stringResource(R.string.enter_your_answer)) },
-            isError = isAnswerWrong,
-        )
-
-    }
-*/
     @Composable
     fun Display(input: String) {
         Text(input)

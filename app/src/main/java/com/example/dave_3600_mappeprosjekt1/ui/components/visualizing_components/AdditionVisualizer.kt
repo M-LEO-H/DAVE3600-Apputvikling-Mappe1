@@ -3,6 +3,8 @@ package com.example.dave_3600_mappeprosjekt1.ui.components.visualizing_component
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -36,12 +38,16 @@ fun AdditionVisualizer(
     val numberedRows = packDotsWithNumbers(dotGroups, rowSize)
     val packedRows = packDots(dotGroups, rowSize)
 
+    val scrollState = rememberScrollState()
+
     Card(
         modifier = modifier.padding(16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier
+                .padding(16.dp)
+                .verticalScroll(scrollState),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
