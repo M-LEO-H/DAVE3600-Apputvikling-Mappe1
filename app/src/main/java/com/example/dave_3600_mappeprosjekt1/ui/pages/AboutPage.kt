@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,12 +33,20 @@ fun AboutPage(navController: NavController? = null){
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(modifier = Modifier.fillMaxWidth()
-                .padding(horizontal = 40.dp)
-                .align(Alignment.CenterHorizontally),
-                style = TextStyle(lineHeight = 2.em),
-                textAlign = TextAlign.Center,
-                text = stringResource(id = R.string.aboutText))
+            Card(
+                modifier = Modifier.padding(16.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 3.dp),
+            ) {
+
+                Text(
+                    modifier = Modifier.fillMaxWidth()
+                        .padding(horizontal = 40.dp)
+                        .align(Alignment.CenterHorizontally),
+                    style = TextStyle(lineHeight = 2.em),
+                    textAlign = TextAlign.Center,
+                    text = stringResource(id = R.string.aboutText)
+                )
+            }
         }
     }
 }

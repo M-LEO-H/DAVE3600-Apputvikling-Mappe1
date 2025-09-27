@@ -5,11 +5,13 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun StringButton(string: String, onClick: (String) -> Unit) {
+fun StringButton(string: String, onClick: (String) -> Unit, modifier : Modifier = Modifier) {
     Button(onClick = { onClick(string) },
+        modifier = modifier,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.secondary,
             contentColor = MaterialTheme.colorScheme.onSecondary

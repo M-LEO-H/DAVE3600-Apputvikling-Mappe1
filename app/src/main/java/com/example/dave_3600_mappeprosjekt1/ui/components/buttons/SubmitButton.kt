@@ -5,15 +5,18 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 
 @Composable
 fun SubmitButton(
-    onSubmitClick:() -> Unit
+    onSubmitClick:() -> Unit,
+    modifier : Modifier = Modifier
 ){
     Button(onClick = { onSubmitClick() },
+        modifier = modifier,
         colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.tertiary,
-            contentColor = MaterialTheme.colorScheme.onTertiary
+            containerColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary
         )
         ) {
         Text("Submit")

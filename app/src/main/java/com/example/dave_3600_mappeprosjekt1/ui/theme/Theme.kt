@@ -11,29 +11,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = primaryLight,
-    onPrimary = onPrimaryLight,
-    background = backgroundLight,
-    surface = surfaceLight,
-    secondary = secondaryLight,
-    tertiary = tertiaryLight,
-    error = errorLight,
-    onError = onErrorLight
+    primary = PrimaryDark,
+    onPrimary = OnPrimaryDark,
+    surface = SurfaceDark,
+    secondary = SecondaryDark,
+    onSecondaryContainer = OnSecondaryContainerDark,
+    tertiary = TertiaryDark,
+    error = ErrorDark,
+    onError = OnErrorDark
 )
 
 
 
 
 private val LightColorScheme = lightColorScheme(
-    primary = primaryLight,
-    onPrimary = onPrimaryLight,
-    background = backgroundLight,
-    surface = surfaceLight,
-    secondary = secondaryLight,
-    tertiary = tertiaryLight,
-    onTertiary = onTertiaryLight,
-    error = errorLight,
-    onError = onErrorLight
+    primary = PrimaryLight,
+    onPrimary = OnPrimaryLight,
+    surface = SurfaceLight,
+    secondary = SecondaryLight,
+    onSecondaryContainer = SecondaryContainerLight,
+    tertiary = TertiaryLight,
+    onTertiary = OnTertiaryLight,
+    error = ErrorLight,
+    onError = OnErrorLight
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -48,9 +48,9 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun AppTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false,
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
