@@ -44,7 +44,7 @@ fun HomePage(navController: NavHostController){
 
     ) {
        Text(
-           text = "GAMENAME"
+           text = "Matte Grubleren"
        )
         Spacer(modifier = Modifier.padding(16.dp))
         OptionsScreen(

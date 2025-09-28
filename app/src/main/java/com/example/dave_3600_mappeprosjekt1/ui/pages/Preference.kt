@@ -49,7 +49,9 @@ fun PreferencePage(
         }
     ) { innerPadding ->
             OptionsScreen(
-                modifier = Modifier.padding(innerPadding),
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize(),
                 options = lengths,
                 onOptionClick = { length ->
                     gameViewModel.updateGameLength(length)

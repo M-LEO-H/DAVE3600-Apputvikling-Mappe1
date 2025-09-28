@@ -55,7 +55,7 @@ fun AboutPage(navController: NavController? = null){
                 Text(
                     modifier = Modifier.fillMaxWidth()
                         //Skaper padding på alle sider
-                        .padding(horizontal = 40.dp)
+                        .padding(horizontal = 40.dp, vertical = 40.dp)
                         //Sentrerer teksten
                         .align(Alignment.CenterHorizontally),
                     style = TextStyle(lineHeight = 2.em),

@@ -232,7 +232,7 @@ fun HorizontalGameLayout(
                             contentAlignment = Alignment.Center
                         ){
                             Text(
-                                text = "Score: $userScore horizontal",
+                                text = "Score: $userScore",
                                 fontSize = 20.sp
                             )
 
@@ -276,7 +276,9 @@ fun HorizontalGameLayout(
             verticalArrangement = Arrangement.SpaceAround
         )
         {
-            Card(){
+            Card(
+
+            ){
                 Column {
                     OutlinedTextField(
                         value = userGuess,
@@ -324,8 +326,7 @@ fun VerticalLayout(
     ) {
 
         Card(
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.onSecondaryContainer),
+
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(0.5f)
@@ -342,7 +343,7 @@ fun VerticalLayout(
 
             ) {
                 Text(
-                    text = "Score: $userScore vertical",
+                    text = "Score: $userScore",
                     fontSize = 20.sp
 
                     )
@@ -369,8 +370,7 @@ fun VerticalLayout(
         }
         Spacer(modifier = Modifier.padding(20.dp))
         Card(
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.onSecondaryContainer),
+
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(0.5f)
