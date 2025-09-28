@@ -10,6 +10,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+/**
+ * Lager en sirkel basert på størrelse og farge.
+ *
+ * @param color Fargen til sirkelen.
+ * @param size Størrelsen til sirkelen.
+ *
+ */
 @Composable
 fun ShapeDot(color: Color, size: Dp = 32.dp) {
     Box(

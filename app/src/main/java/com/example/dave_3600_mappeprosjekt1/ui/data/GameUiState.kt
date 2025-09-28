@@ -10,10 +10,6 @@ package com.example.dave_3600_mappeprosjekt1.ui.data
  * @param isGameOver Sier om spillet er over.
  * @param score Antall poeng bruker har.
  * @param quitDialog Bestemmer om dialogboks skal vises. Brukes når brukeren vil avslutte før spillet er ferdig.
- *
- *
- *
- *
  */
 data class GameUiState(
     val gameLength: Int = 5,

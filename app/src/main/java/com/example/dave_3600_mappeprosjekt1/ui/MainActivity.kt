@@ -13,6 +13,17 @@ import com.example.dave_3600_mappeprosjekt1.ui.components.nav.AppNavHost
 import com.example.dave_3600_mappeprosjekt1.ui.components.GameViewModel
 import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
+
+/**
+ * Hovedaktivitet for applikasjonen.
+ *
+ * Initialiserer:
+ * - Edge-to-edge visning for å utnytte hele skjermen.
+ * - [GameViewModel] som holder på spilltilstand og sikrer at data ikke slettes ved skjermrotasjon.
+ * - Navigasjonscontroller [NavHostController] for å navigere mellom applikasjonens sider.
+ *
+ * Setter innholdet til [AppTheme] og starter [AppNavHost] som håndterer navigasjon mellom skjermene.
+ */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +37,6 @@ class MainActivity : ComponentActivity() {
             AppTheme {
                 AppNavHost(navController, gameViewModel)
 
-                //TODO: make app icon
 
             }
         }

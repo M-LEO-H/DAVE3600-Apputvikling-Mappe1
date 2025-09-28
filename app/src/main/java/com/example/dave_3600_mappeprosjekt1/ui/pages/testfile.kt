@@ -1,4 +1,0 @@
-package com.example.dave_3600_mappeprosjekt1.ui.pages
-
-class testfile {
-}

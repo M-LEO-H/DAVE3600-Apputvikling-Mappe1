@@ -1,6 +1,6 @@
 package com.example.dave_3600_mappeprosjekt1.ui.pages
 
-import DialogAlert
+import com.example.dave_3600_mappeprosjekt1.ui.components.dialogs.DialogAlert
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -13,17 +13,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -34,14 +31,21 @@ import com.example.dave_3600_mappeprosjekt1.ui.components.nav.TopBar
 import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.dave_3600_mappeprosjekt1.ui.components.visualizing_components.AdditionVisualizer
 
 
-
-
-//TODO: Fix hardcoded string -> string file
+/**
+ * Side som viser spill skjermen for appen.
+ * Viser:
+ *  - Brukerens nåværende poeng.
+ *  - Oppgaven som skal løses.
+ *  - Inputfelt og numerisk tastatur for svar.
+ *  - Dialoger ved feil svar, spill over eller når brukeren vil avslutte.
+ *
+ * @param navController Navigeringskontroller for navigasjon
+ * @param gameViewModel Viewmodel for spill
+ */
 
 @Composable
 fun GamePage(
@@ -59,7 +63,9 @@ fun GamePage(
         }
     ) { innerPadding ->
         gameUiState.currentAddition?.let {
-            BoxWithConstraints(modifier = Modifier.padding(innerPadding).fillMaxSize()){
+            BoxWithConstraints(modifier = Modifier.padding(innerPadding).fillMaxSize())
+            {
+                //Velger hvilken layout som skal brukes basert på skjermens størrelse
                 if (maxWidth > maxHeight){
                     HorizontalGameLayout(
                         userScore = gameUiState.score,
@@ -91,7 +97,7 @@ fun GamePage(
 
 
 
-
+            //Viser dialog ved feil svar
             if (gameUiState.isAnswerWrong) {
                 DialogAlert(
 
@@ -113,7 +119,7 @@ fun GamePage(
                     }
                 )
             }
-            //TODO: Change all hardcoded strings -> string Resource
+            //Viser dialog ved spillets slutt
             if (gameUiState.isGameOver) {
                 DialogAlert(
                     dialogTitle =  {
@@ -139,6 +145,7 @@ fun GamePage(
             }
 
         }
+        // Vis dialog når brukeren prøver å avslutte spillet
         if(gameUiState.quitDialog){
             DialogAlert(
                 dialogTitle = {
@@ -194,6 +201,21 @@ fun GamePage(
 }
 
 
+/**
+ * Horisontal layout for spill-skjermen.
+ *
+ * Viser score, oppgave og inputfelt side ved side.
+ *
+ * @param userScore Nåværende poengsum.
+ * @param currentAddition Oppgaven som skal løses.
+ * @param userGuess Brukerens nåværende svar.
+ * @param onUserGuessChanged Callback når bruker endrer input.
+ * @param isAnswerWrong Angir om forrige svar var feil.
+ * @param onDigitClick Callback når et siffer trykkes.
+ * @param onDeleteClick Callback for sletting.
+ * @param onSubmitClick Callback for innsending av svar.
+ * @param modifier Modifier for layout.
+ */
 @Composable
 fun HorizontalGameLayout(
     onDigitClick: (String) -> Unit,
@@ -276,9 +298,7 @@ fun HorizontalGameLayout(
             verticalArrangement = Arrangement.SpaceAround
         )
         {
-            Card(
-
-            ){
+            Card{
                 Column {
                     OutlinedTextField(
                         value = userGuess,
@@ -303,6 +323,13 @@ fun HorizontalGameLayout(
     }
 }
 
+/**
+ * Vertikal layout for spill-skjermen.
+ *
+ * Viser score, oppgave og inputfelt under hverandre.
+ *
+ * Parametre: Samme som [HorizontalGameLayout].
+ */
 @Composable
 fun VerticalLayout(
     onDigitClick: (String) -> Unit,

@@ -12,11 +12,23 @@ import com.example.dave_3600_mappeprosjekt1.ui.pages.HomePage
 import com.example.dave_3600_mappeprosjekt1.ui.pages.PreferencePage
 
 /**
- * Navigasjon for applikasjonen.
- * Brukes til å navigere til de forskjellige sidene i applikasjonen
- * @param navController XXXXX
- * @param gameViewModel Tar inn gameview model som sender data til de forskjellige skjermbildene. Sørger for at data ikke slettes når skjermen endres.
+ * Hoved-navhost for applikasjonen.
+ *
+ * Dette elementer definerer navigasjonsstrukturen for appen.
+ * Den bestemmer hvilken side som skal vises basert på hvilken rute (destination)
+ * som er aktiv i [NavHostController].
+ *
+ * Følgende sider er inkludert:
+ * - [HomePage] -> Startskjerm med inngang til spillet og andre valg.
+ * - [GamePage] -> Selve spillet, styrt av [GameViewModel].
+ * - [AboutPage] -> Viser informasjon om applikasjonen.
+ * - [PreferencePage] → Innstillinger for spill og preferanser.
+ *
+ * @param navController Kontroller som håndterer navigasjon mellom skjermene.
+ * @param gameViewModel Delt [GameViewModel] som sørger for at spilldata beholdes
+ *                      på tvers av skjermrotasjoner og navigasjon.
  */
+
 @Composable
 fun AppNavHost(
     navController: NavHostController,
@@ -24,10 +36,8 @@ fun AppNavHost(
 ) {
     NavHost(navController = navController, startDestination = AppPages.Home.name) {
 
-        // HOME SCREEN
+        // Skjermer
         composable(AppPages.Home.name) { HomePage(navController) }
-
-        // OTHER SCREENS
         composable(AppPages.Game.name) { GamePage(navController, gameViewModel) }
         composable(AppPages.About.name) { AboutPage(navController) }
         composable(AppPages.Preference.name) { PreferencePage(navController, gameViewModel) }

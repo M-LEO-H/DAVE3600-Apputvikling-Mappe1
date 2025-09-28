@@ -1,7 +1,6 @@
 package com.example.dave_3600_mappeprosjekt1.ui.components.buttons
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -15,19 +14,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 
-
 /**
-Gjenbrukbar composable som skal vise en liste med knapper.
-Den er laget for å være generisk, og kan ta inn flere data typer.
-Den bruker en lazycolumn for å effektivt vise lange lister.
-Fargen på knappene endres basert på hva som blir satt inn. De er hardkodet ettersom skjermen endte opp med å kun bli brukt her.
-
- @param modifier Modifier som brukes av boksen skjermen lages i.
- @param options Liste med det som skal vises
- @param onOptionClick Kaller en funksjon når knapper blir trykket.
- @param optionLabel Gir tekst i knappen.
-
+ * Gjenbrukbar composable som skal vise en liste med knapper.
+ * Den er laget for å være generisk, og kan ta inn flere data typer.
+ * Den bruker en lazycolumn for å effektivt vise lange lister.
+ * Fargen på knappene endres basert på hva som blir satt inn. De er hardkodet ettersom skjermen endte opp med å kun bli brukt her.
+ *
+ *  @param modifier Modifier som brukes av boksen skjermen lages i.
+ *  @param options Liste med det som skal vises
+ *  @param onOptionClick Kaller en funksjon når knapper blir trykket.
+ *  @param optionLabel Gir tekst i knappen.
  */
+
 @Composable
 fun <T> OptionsScreen(
     modifier: Modifier = Modifier,

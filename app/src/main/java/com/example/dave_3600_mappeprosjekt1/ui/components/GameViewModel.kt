@@ -1,12 +1,10 @@
 package com.example.dave_3600_mappeprosjekt1.ui.components
 
 import android.app.Application
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.res.stringArrayResource
-import androidx.lifecycle.ViewModel
+
 import com.example.dave_3600_mappeprosjekt1.R
 import com.example.dave_3600_mappeprosjekt1.ui.data.GameUiState
 
@@ -14,7 +12,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import com.example.dave_3600_mappeprosjekt1.ui.data.ShowAddition
 import kotlinx.coroutines.flow.asStateFlow
-import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.AndroidViewModel
 import kotlinx.coroutines.flow.update
 
@@ -135,7 +132,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         }
         //Sjekker om spiller et over. Dersom det er over, legg til poeng og avslutt spill.
         if(isGameOver()){
-            _uiState.update { it ->
+            _uiState.update {
                 it.copy(
                     score = it.score + addScore,
                     isGameOver = true
@@ -144,7 +141,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
         } else {
             //Dersom det ikke er over, legg til poeng og gå til neste spørsmål.
-            _uiState.update { it ->
+            _uiState.update {
                 it.copy(
                     score = it.score + addScore,
                     currentAddition = getNextAddition()
@@ -158,7 +155,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     //Viser dialogboks dersom bruker ønsker å avslutte spill.
     fun backClick(){
-        _uiState.update { it ->
+        _uiState.update {
             it.copy(
                 quitDialog = true
             )
@@ -166,7 +163,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
     //Lukker dialogboksdersom bruker ikke ønsket å avslutte allikevel.
     fun dismissBackClick(){
-        _uiState.update { it ->
+        _uiState.update {
             it.copy(
                 quitDialog = false
             )
@@ -176,7 +173,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     private fun wrongAnswer(){
         //Brukeren har ikke riktig svar og får derfor ingen poeng.
         firstGuess = false
-        _uiState.update {it ->
+        _uiState.update {
             it.copy(
                 isAnswerWrong = true
             )
@@ -197,7 +194,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     //funksjon som kalles når bruker har fått feil og skal forsøke igjen. Setter isAnswerWrong til false.
     fun tryAgain(){
-        _uiState.update { it ->
+        _uiState.update {
             it.copy(
                 isAnswerWrong = false
             )
@@ -208,7 +205,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     //Oppdaterer spill lengde basert på det brukeren har valgt. Setter verdi i GameUiState.
     fun updateGameLength(length: Int) {
 
-        _uiState.update { it ->
+        _uiState.update {
             it.copy(
                 gameLength = length
             )

@@ -26,7 +26,12 @@ import com.example.dave_3600_mappeprosjekt1.ui.components.nav.TopBar
 import com.example.dave_3600_mappeprosjekt1.ui.components.buttons.OptionsScreen
 import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
-
+/**
+ * Preferanse side for appen, der man kan velge spill lengde
+ *
+ * @param navController Navigeringskontroller for navigasjon
+ * @param gameViewModel Viewmodel for spill
+ */
 @Composable
 fun PreferencePage(
     navController: NavController,
@@ -36,7 +41,6 @@ fun PreferencePage(
     val uiState by gameViewModel.uiState.collectAsState()
 
 
-    //TODO: Fix how selected button looks, mby invert colour + increase text size if selected
     Scaffold(
         topBar = {
             TopBar(

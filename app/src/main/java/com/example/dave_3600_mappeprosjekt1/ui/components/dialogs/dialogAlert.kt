@@ -1,11 +1,10 @@
+package com.example.dave_3600_mappeprosjekt1.ui.components.dialogs
+
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.BasicAlertDialog
-import androidx.compose.material3.ExperimentalMaterial3Api
+
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * Gjenbrukbar dialog boks som brukes til å gi bruker informasjon og gi dem valg på hva dem vil gjøre videre.
@@ -17,9 +16,6 @@ import androidx.compose.ui.tooling.preview.Preview
  * @param dismissButton Knapp hvor bruker velger å avslutte noe. Den er valgfri.
  */
 
-
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DialogAlert(
     dialogTitle: @Composable () -> Unit,
