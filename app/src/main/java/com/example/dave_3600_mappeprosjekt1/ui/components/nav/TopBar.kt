@@ -15,6 +15,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.dave_3600_mappeprosjekt1.ui.theme.AppTheme
 
+/**
+ * Top bar composable for applikasjonen. Lager en top bar som viser en tittel og en tilbakeknapp brukt for navigasjon.
+ * Viser hvor i applikasjonen man befinner seg.
+ * @param title Tittel på siden man er på.
+ * @param onBackClick Kaller funksjon når trykket på. Brukes for navigasjon.
+ *
+ */
 
 //Top bar with back button and title
 @OptIn(ExperimentalMaterial3Api::class)
@@ -24,16 +31,19 @@ fun TopBar(
     onBackClick: () -> Unit = {}
 ) {
     CenterAlignedTopAppBar(
+        //Gir topbar farge.
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,
             titleContentColor = MaterialTheme.colorScheme.onPrimary,
             ),
+        //Tittel på topbaren.
             title = {
                 Text(
                     text = title,
                     style = MaterialTheme.typography.titleLarge
                 )
             },
+        //Ikon brukt for å lage en pil som skal signalisere at man kan gå tilbake.
             navigationIcon = {
                 IconButton(onClick = onBackClick) {
                     Icon(

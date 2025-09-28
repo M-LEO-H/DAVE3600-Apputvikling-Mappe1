@@ -2,7 +2,7 @@ package com.example.dave_3600_mappeprosjekt1.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-//Light color scheme
+//Light color scheme. Used for LightMode.
 //Primary Colors
 val PrimaryLight = Color(0xFF445E91)
 val OnPrimaryLight = Color(0xFFFFFFFF)
@@ -22,7 +22,7 @@ val SurfaceLight = Color(0xFFF9F9FF)
 
 
 
-//DARK Theme
+//DARK Theme used for darkmode.
 val PrimaryDark = Color(0xFFADC6FF)
 val OnPrimaryDark = Color(0xFF102F60)
 

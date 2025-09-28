@@ -193,10 +193,6 @@ fun GamePage(
     }
 }
 
-    @Composable
-    fun Display(input: String) {
-        Text(input)
-    }
 
 @Composable
 fun HorizontalGameLayout(
@@ -320,10 +316,9 @@ fun VerticalLayout(
     Column(
         modifier = modifier
             .fillMaxSize()
-
         ,
         horizontalAlignment = Alignment.CenterHorizontally,
-      // verticalArrangement = Arrangement.SpaceEvenly
+
 
 
     ) {
@@ -416,17 +411,3 @@ fun VerticalLayout(
 
 }
 
-/*
-
-
-
-@Preview(name = "English")
-@Preview(name = "Norsk", locale = "nb")
-@Preview(name = "German", locale = "de")
-@Composable
-fun GamePagePreview() {
-    val fakeNavController = NavHostController(LocalContext.current)
-    AppTheme {
-        GamePage(navController = fakeNavController)
-    }
-}*/

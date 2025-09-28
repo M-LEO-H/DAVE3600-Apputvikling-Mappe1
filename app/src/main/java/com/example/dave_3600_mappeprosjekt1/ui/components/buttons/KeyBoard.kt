@@ -11,6 +11,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+/**
+ * Composable funksjon for å lage og vise et tastatur som skal brukes til user input i spillet.
+ * Den er bygget opp av flere "Stringbutton", en "Deletebutton", og en "Submitbutton".
+ * Hver Stringbutton inneholder en string verdi som skal vises, og brukes for sifferene 0-9.
+ * Hver knapp har en egen onClick funksjon som brukes når knappen trykkes.
+ */
 
 @Composable
 fun Keyboard(
@@ -21,12 +27,13 @@ fun Keyboard(
     ) {
 
 
-    //val userInput = arrayOf()
-
+        //Kolonne som skal inneholde alle knappene og brukes til å holde orden på plasseringen til knappene.
         Column(
             modifier = modifier,
+            //Skaper mellomrom mellom knappene.
             verticalArrangement = Arrangement.spacedBy(1.dp)
         ) {
+            //Rader med knappene. Inneholder sifferene 0-9, submit knapp, og en delete knapp
 
             Row {
                 StringButton("1", onClick = onDigitClick, modifier = Modifier.weight(1f))

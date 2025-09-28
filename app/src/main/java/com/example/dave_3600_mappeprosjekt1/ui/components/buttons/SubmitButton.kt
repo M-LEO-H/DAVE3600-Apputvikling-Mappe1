@@ -7,6 +7,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
+
+/**
+ * Composable knapp som brukes av bruker til å sende inn svar.
+ * Den kaller en funksjon når den trykkes på.
+ * Den blir gitt primary farge for å sikre at den skiller seg ut.
+ *
+ * @param onSubmitClick Funksjon som kalles når trykket på.
+ */
 @Composable
 fun SubmitButton(
     onSubmitClick:() -> Unit,

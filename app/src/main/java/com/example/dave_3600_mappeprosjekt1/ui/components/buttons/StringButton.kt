@@ -8,10 +8,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
+
+/**
+ * Composable funksjon som brukes til å lage knapp. Den viser en string verdi og kaller en funksjon når den trykkes på.
+ * Den skal bruke til å lage siffer knappene i tastaturet.
+ *
+ * @param string Teksten knappen skal vise
+ * @param onClick Funksjon som kalles ved knapptrykk og tar med string verdien til knappen som trykkes.
+ */
 @Composable
 fun StringButton(string: String, onClick: (String) -> Unit, modifier : Modifier = Modifier) {
+    //Ved klikk kalles funksjonen onClick med string verdien som trykkes.
     Button(onClick = { onClick(string) },
         modifier = modifier,
+        //Gir knappen farge.
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.secondary,
             contentColor = MaterialTheme.colorScheme.onSecondary

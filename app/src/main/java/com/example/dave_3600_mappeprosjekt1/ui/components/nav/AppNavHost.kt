@@ -11,6 +11,12 @@ import com.example.dave_3600_mappeprosjekt1.ui.pages.GamePage
 import com.example.dave_3600_mappeprosjekt1.ui.pages.HomePage
 import com.example.dave_3600_mappeprosjekt1.ui.pages.PreferencePage
 
+/**
+ * Navigasjon for applikasjonen.
+ * Brukes til å navigere til de forskjellige sidene i applikasjonen
+ * @param navController XXXXX
+ * @param gameViewModel Tar inn gameview model som sender data til de forskjellige skjermbildene. Sørger for at data ikke slettes når skjermen endres.
+ */
 @Composable
 fun AppNavHost(
     navController: NavHostController,
