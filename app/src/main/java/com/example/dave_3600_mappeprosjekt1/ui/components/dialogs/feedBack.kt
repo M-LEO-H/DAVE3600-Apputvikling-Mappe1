@@ -7,7 +7,9 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.dave_3600_mappeprosjekt1.R
 
 //TODO: Fix hardcoded strings -> string file
 @Composable
@@ -40,7 +42,7 @@ fun AlertDialogStock(
             },
                 enabled = isCorrect
             ) {
-                Text("Next question")
+                Text(stringResource(R.string.next_question))
             }
         },
         dismissButton = {
@@ -49,7 +51,7 @@ fun AlertDialogStock(
             },
                 enabled = !isCorrect
             ) {
-                Text("Retry")
+                Text(stringResource(R.string.try_again))
             }
         },
         onDismissRequest = {
@@ -74,6 +76,7 @@ fun wrongAnswer() {
 }
 
 
+/*
 @Preview
 @Composable
 fun AlertDialogPreview() {
@@ -83,4 +86,4 @@ fun AlertDialogPreview() {
         "Du har korrekt",
         "Resultat",
         isCorrect = true)
-}
+}*/

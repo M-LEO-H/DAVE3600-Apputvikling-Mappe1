@@ -1,4 +1,4 @@
-<resources>
+    <resources>
     <string name="app_name">DAVE-3600-Mappeprosjekt1</string>
     <string name="preference">Präferenzen</string>
     <string name="preferenceText">Sprache auswählen</string>
@@ -7,4 +7,15 @@
     <string name="aboutTitle">Über das Spiel</string>
     <string name="aboutText">In diesem Spiel geht es darum, kleinen Kindern einfache Additionsaufgaben beizubringen. Der Spieler erhält einen Fragenkatalog mit 5, 10 und 15 Fragen. Nach jeder Antwort erhält der Spieler eine Rückmeldung, ob die Antwort richtig war oder nicht. Die Antwort wird mit Abbildungen und Erklärungen ergänzt.</string>
     <string name="enter_your_answer">Geben Sie Ihre Antwort ein</string>
+
+
+    <string-array name="navigation_screen_options">
+        <item>@string/home</item>
+        <item>@string/game</item>
+        <item>@string/about</item>
+        <item>@string/preference</item>
+    </string-array>
+
+
+
 </resources>

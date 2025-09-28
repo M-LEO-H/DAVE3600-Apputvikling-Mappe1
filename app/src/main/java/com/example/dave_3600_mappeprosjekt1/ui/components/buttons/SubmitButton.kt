@@ -6,6 +6,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.example.dave_3600_mappeprosjekt1.R
 
 
 /**
@@ -27,7 +29,7 @@ fun SubmitButton(
             contentColor = MaterialTheme.colorScheme.onPrimary
         )
         ) {
-        Text("Submit")
+        Text( stringResource(R.string.submit))
 
     }
 }

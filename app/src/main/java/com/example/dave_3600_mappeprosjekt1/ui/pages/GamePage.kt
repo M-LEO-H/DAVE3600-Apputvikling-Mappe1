@@ -97,7 +97,7 @@ fun GamePage(
 
                     dialogTitle = {
                         Text(
-                            text = "Wrong answer!",
+                            text = stringResource(R.string.wrong_answer),
                         )
                     },
                     dialogText = {
@@ -108,7 +108,7 @@ fun GamePage(
                     },
                     confirmButton = {
                         Button(onClick = { gameViewModel.tryAgain() }) {
-                            Text("Confirm")
+                            Text(stringResource(R.string.try_again))
                         }
                     }
                 )
@@ -118,21 +118,21 @@ fun GamePage(
                 DialogAlert(
                     dialogTitle =  {
                         Text(
-                            text = "Game over",
+                            text = stringResource(R.string.game_over),
                         )
                     },
                     dialogText = {
                         //TODO: final score length shows default 10 length even though game length is fifferece
-                        Text("Final score: ${gameUiState.score} / ${gameUiState.gameLength}")
+                        Text("${stringResource(R.string.final_score)}: ${gameUiState.score} / ${gameUiState.gameLength}")
                     },
                     confirmButton = {
                         Button(onClick = { gameViewModel.resetGame() }) {
-                            Text("Restart game")
+                            Text(stringResource(R.string.play_again))
                         }
                     },
                     dismissButton = {
                         Button(onClick = { navController.navigateUp() }) {
-                            Text("Home")
+                            Text(stringResource(R.string.home))
                         }
                     }
                 )
@@ -143,7 +143,7 @@ fun GamePage(
             DialogAlert(
                 dialogTitle = {
                     Text(
-                        text="Do you want to leave?",
+                        text= stringResource(R.string.want_to_leave),
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -151,7 +151,7 @@ fun GamePage(
                 },
                 dialogText = {
                     Text(
-                        text="Your game process will be reset!",
+                        text= stringResource(R.string.game_process_will_be_reset),
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -167,7 +167,7 @@ fun GamePage(
 
                     ) {
                         Text(
-                            text = "Stay",
+                            text = stringResource(R.string.stay),
                             textAlign = TextAlign.Center,
 
                         )
@@ -185,7 +185,7 @@ fun GamePage(
 
 
                     ) {
-                        Text("Leave")
+                        Text(stringResource(R.string.leave))
                     }
                 }
             )
@@ -232,7 +232,7 @@ fun HorizontalGameLayout(
                             contentAlignment = Alignment.Center
                         ){
                             Text(
-                                text = "Score: $userScore",
+                                text = "${stringResource(R.string.score)}: $userScore",
                                 fontSize = 20.sp
                             )
 
@@ -244,7 +244,7 @@ fun HorizontalGameLayout(
                             contentAlignment = Alignment.Center
                         ){
                             Text(
-                                text = "Solve this : ",
+                                text = " ${stringResource(R.string.solve_this)} : ",
                                 fontSize = 20.sp
                             )
 
@@ -343,13 +343,13 @@ fun VerticalLayout(
 
             ) {
                 Text(
-                    text = "Score: $userScore",
+                    text = "${stringResource(R.string.score)}: $userScore",
                     fontSize = 20.sp
 
                     )
                 Spacer(modifier = Modifier.padding(10.dp))
                 Text(
-                    text = "Solve this:",
+                    text = stringResource(R.string.solve_this),
                     fontSize = 20.sp
                 )
                 Box(
