@@ -128,7 +128,6 @@ fun GamePage(
                         )
                     },
                     dialogText = {
-                        //TODO: final score length shows default 10 length even though game length is fifferece
                         Text("${stringResource(R.string.final_score)}: ${gameUiState.score} / ${gameUiState.gameLength}")
                     },
                     confirmButton = {
