@@ -11,7 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.dave_3600_mappeprosjekt1.R
 
 
 /**
@@ -51,7 +53,7 @@ fun <T> OptionsScreen(
                     modifier = Modifier.width(240.dp),
                     //Gir farge basert på liste innhold. Er hardkodet ettersom listen er kun brukt en gang.
                     //Dersom play knapp skal fargen være primary.
-                    colors = if(option == "Play"){
+                    colors = if(option == stringResource(R.string.game)){
                         ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.primary,
                             contentColor = MaterialTheme.colorScheme.onPrimary,

@@ -49,6 +49,7 @@ fun HomePage(navController: NavHostController){
             stringResource(R.string.game_name)
        )
         Spacer(modifier = Modifier.padding(16.dp))
+
         //Viser navigasjonsknappene
         OptionsScreen(
             options = options.map { it.first },
