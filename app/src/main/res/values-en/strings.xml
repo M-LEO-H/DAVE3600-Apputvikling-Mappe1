@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Math Thinker</string>
+    <string name="preference">Preferences</string>
+    <string name="preferenceText">Select Language</string>
+    <string name="game">Game</string>
+    <string name="game_text">Submit an answer!</string>
+    <string name="aboutTitle">About the Game</string>
+    <string name="aboutText">This game is designed to teach young children simple addition. The game presents the user with a set of 5, 10, or 15 questions. After each answer, the game provides feedback on whether it was correct or not, with illustrations and explanations of the correct answer.</string>
+    <string name="enter_your_answer">Enter your answer</string>
+    <string name="game_process_will_be_reset">The game process will restart</string>
+    <string name="stay">Stay</string>
+    <string name="leave">Leave</string>
+    <string name="score">Score</string>
+    <string name="final_score">Total Score</string>
+    <string name="play_again">Play again?</string>
+    <string name="want_to_leave">Do you want to leave?</string>
+    <string name="home">Home</string>
+    <string name="wrong_answer">Wrong answer!</string>
+    <string name="try_again">Try again</string>
+    <string name="solve_this">Solve this</string>
+    <string name="about">About</string>
+    <string name="game_over">Player finished</string>
+    <string name="game_name">Math Thinker</string>
+    <string name="next_question">Next Question</string>
+    <string name="submit">Submit</string>
+    <string name="delete">Delete</string>
+    <string name="lets_vizualize">Let\'s visualize the answer</string>
+
+    <string-array name="navigation_screen_options">
+        <item>@string/home</item>
+        <item>@string/game</item>
+        <item>@string/about</item>
+        <item>@string/preference</item>
+    </string-array>
+</resources>

@@ -1,0 +1,36 @@
+package com.example.dave_3600_mappeprosjekt1.ui.components.buttons
+
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.example.dave_3600_mappeprosjekt1.R
+
+
+/**
+ * Composable knapp som brukes av bruker til å sende inn svar.
+ * Den kaller en funksjon når den trykkes på.
+ * Den blir gitt primary farge for å sikre at den skiller seg ut.
+ *
+ * @param onSubmitClick Funksjon som kalles når trykket på.
+ */
+@Composable
+fun SubmitButton(
+    onSubmitClick:() -> Unit,
+    modifier : Modifier = Modifier
+){
+    Button(onClick = { onSubmitClick() },
+        modifier = modifier,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary
+        )
+        ) {
+        Text( stringResource(R.string.submit))
+
+    }
+}
+

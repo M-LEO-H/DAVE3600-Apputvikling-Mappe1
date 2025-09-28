@@ -1,7 +1,35 @@
 <resources>
-    <string name="app_name">DAVE-3600-Mappeprosjekt1</string>
-    <string name="preference">Präferenzen</string>
-    <string name="preferenceText">Sprache auswählen</string>
+    <string name="app_name">Mathe Denker</string>
+    <string name="preference">Einstellungen</string>
+    <string name="preferenceText">Sprache wählen</string>
     <string name="game">Spiel</string>
-    <string name="game_text">Gib eine Antwort!</string>
+    <string name="game_text">Antwort geben!</string>
+    <string name="aboutTitle">Über das Spiel</string>
+    <string name="aboutText">Dieses Spiel soll kleinen Kindern einfache Additionen beibringen. Das Spiel stellt dem Benutzer eine Reihe von Fragen mit 5, 10 oder 15 Aufgaben. Nach jeder Antwort gibt das Spiel Feedback, ob die Antwort richtig war oder nicht, mit Illustrationen und Erklärungen der richtigen Antwort.</string>
+    <string name="enter_your_answer">Antwort eingeben</string>
+    <string name="game_process_will_be_reset">Der Spielvorgang wird neu gestartet</string>
+    <string name="stay">Bleiben</string>
+    <string name="leave">Verlassen</string>
+    <string name="score">Punktzahl</string>
+    <string name="final_score">Gesamtpunktzahl</string>
+    <string name="play_again">Noch einmal spielen?</string>
+    <string name="want_to_leave">Möchten Sie verlassen?</string>
+    <string name="home">Startseite</string>
+    <string name="wrong_answer">Falsche Antwort!</string>
+    <string name="try_again">Versuchen Sie es erneut</string>
+    <string name="solve_this">Lösen Sie dies</string>
+    <string name="about">Über</string>
+    <string name="game_over">Spiel ist beendet</string>
+    <string name="game_name">Mathe Denker</string>
+    <string name="next_question">Nächste Frage</string>
+    <string name="submit">Antwort eingeben</string>
+    <string name="delete">Löschen</string>
+    <string name="lets_vizualize">Lassen Sie uns die Antwort zeigen</string>
+
+    <string-array name="navigation_screen_options">
+        <item>@string/home</item>
+        <item>@string/game</item>
+        <item>@string/about</item>
+        <item>@string/preference</item>
+    </string-array>
 </resources>
