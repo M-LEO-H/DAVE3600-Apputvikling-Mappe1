@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DAVE-3600-MappeProject1</string>
+    <string name="app_name">Math Thinker</string>
     <string name="preference">Preferences</string>
     <string name="preferenceText">Select Language</string>
     <string name="game">Game</string>
